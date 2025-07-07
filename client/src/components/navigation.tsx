@@ -25,45 +25,48 @@ export default function Navigation() {
 
   return (
     <>
-      <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white/95 backdrop-blur-sm border-b border-linear-200" : "bg-white border-b border-linear-200"
+      <nav className={`fixed w-full top-0 z-50 transition-all duration-500 ${
+        isScrolled ? "glass" : "bg-transparent"
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-3">
+          <div className="flex justify-between items-center py-4">
             <div className="flex items-center">
-              <div className="text-xl font-semibold text-linear-900">Shanghai Traders</div>
-              <div className="hidden sm:block ml-3 px-2 py-1 bg-linear-100 rounded text-xs text-linear-600 font-medium">
-                Textile Machinery Importers
-              </div>
+              <div className="text-2xl font-bold text-white">Shanghai Traders</div>
             </div>
             
-            <div className="hidden md:flex items-center space-x-1">
+            <div className="hidden md:flex items-center space-x-8">
               <button 
                 onClick={() => scrollToSection("hero")}
-                className="px-3 py-2 text-sm font-medium text-linear-600 hover:text-linear-900 hover:bg-linear-50 rounded-md transition-colors"
+                className="text-white/80 hover:text-white transition-colors duration-300 font-medium"
               >
                 Home
               </button>
               <button 
                 onClick={() => scrollToSection("about")}
-                className="px-3 py-2 text-sm font-medium text-linear-600 hover:text-linear-900 hover:bg-linear-50 rounded-md transition-colors"
+                className="text-white/80 hover:text-white transition-colors duration-300 font-medium"
               >
                 About
               </button>
               <button 
                 onClick={() => scrollToSection("products")}
-                className="px-3 py-2 text-sm font-medium text-linear-600 hover:text-linear-900 hover:bg-linear-50 rounded-md transition-colors"
+                className="text-white/80 hover:text-white transition-colors duration-300 font-medium"
               >
                 Products
               </button>
               <button 
+                onClick={() => scrollToSection("process")}
+                className="text-white/80 hover:text-white transition-colors duration-300 font-medium"
+              >
+                Process
+              </button>
+              <button 
                 onClick={() => scrollToSection("contact")}
-                className="px-3 py-2 text-sm font-medium text-linear-600 hover:text-linear-900 hover:bg-linear-50 rounded-md transition-colors"
+                className="text-white/80 hover:text-white transition-colors duration-300 font-medium"
               >
                 Contact
               </button>
               <Button 
-                className="ml-4 bg-primary hover:bg-blue-600 text-white text-sm px-4 py-2 h-9"
+                className="ml-4 bg-accent hover:bg-yellow-500 text-navy-dark px-6 py-2 font-semibold rounded-full hover-glow transition-all duration-300"
                 onClick={() => scrollToSection("contact")}
               >
                 Get Quote
@@ -75,9 +78,9 @@ export default function Navigation() {
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-linear-600 hover:text-linear-900 hover:bg-linear-50"
+                className="text-white hover:text-white/80"
               >
-                {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </Button>
             </div>
           </div>
@@ -87,36 +90,53 @@ export default function Navigation() {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-40 md:hidden">
-          <div className="fixed inset-0 bg-black bg-opacity-25" onClick={() => setIsMobileMenuOpen(false)} />
-          <div className="fixed top-[49px] right-0 w-64 bg-white border-l border-linear-200 p-4">
-            <div className="flex flex-col space-y-1">
+          <div className="fixed inset-0 bg-black bg-opacity-50" onClick={() => setIsMobileMenuOpen(false)} />
+          <div className="fixed top-0 right-0 w-80 h-full glass-card p-6">
+            <div className="flex justify-between items-center mb-8">
+              <span className="text-xl font-bold text-white">Menu</span>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="text-white hover:text-white/80"
+              >
+                <X className="h-6 w-6" />
+              </Button>
+            </div>
+            <div className="flex flex-col space-y-6">
               <button 
                 onClick={() => scrollToSection("hero")}
-                className="text-left px-3 py-2 text-sm font-medium text-linear-600 hover:text-linear-900 hover:bg-linear-50 rounded-md transition-colors"
+                className="text-left text-white/80 hover:text-white transition-colors duration-300 text-lg font-medium"
               >
                 Home
               </button>
               <button 
                 onClick={() => scrollToSection("about")}
-                className="text-left px-3 py-2 text-sm font-medium text-linear-600 hover:text-linear-900 hover:bg-linear-50 rounded-md transition-colors"
+                className="text-left text-white/80 hover:text-white transition-colors duration-300 text-lg font-medium"
               >
                 About
               </button>
               <button 
                 onClick={() => scrollToSection("products")}
-                className="text-left px-3 py-2 text-sm font-medium text-linear-600 hover:text-linear-900 hover:bg-linear-50 rounded-md transition-colors"
+                className="text-left text-white/80 hover:text-white transition-colors duration-300 text-lg font-medium"
               >
                 Products
               </button>
               <button 
+                onClick={() => scrollToSection("process")}
+                className="text-left text-white/80 hover:text-white transition-colors duration-300 text-lg font-medium"
+              >
+                Process
+              </button>
+              <button 
                 onClick={() => scrollToSection("contact")}
-                className="text-left px-3 py-2 text-sm font-medium text-linear-600 hover:text-linear-900 hover:bg-linear-50 rounded-md transition-colors"
+                className="text-left text-white/80 hover:text-white transition-colors duration-300 text-lg font-medium"
               >
                 Contact
               </button>
-              <div className="pt-3 mt-3 border-t border-linear-200">
+              <div className="pt-6 mt-6 border-t border-white/20">
                 <Button 
-                  className="w-full bg-primary hover:bg-blue-600 text-white text-sm"
+                  className="w-full bg-accent hover:bg-yellow-500 text-navy-dark font-semibold rounded-full"
                   onClick={() => scrollToSection("contact")}
                 >
                   Get Quote

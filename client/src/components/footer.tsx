@@ -9,40 +9,48 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-white border-t border-linear-200 py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-navy-dark py-16 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-10 right-10 w-20 h-20 bg-accent rounded-full animate-float"></div>
+        <div className="absolute bottom-10 left-10 w-16 h-16 bg-blue-500 rounded-lg animate-float" style={{animationDelay: '2s'}}></div>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
           <div className="md:col-span-2">
-            <div className="text-xl font-semibold text-linear-900 mb-4">Shanghai Traders</div>
-            <p className="text-linear-600 mb-6 leading-relaxed max-w-md">
+            <div className="text-2xl font-bold text-white mb-4">
+              Shanghai <span className="text-gradient-gold">Traders</span>
+            </div>
+            <p className="text-white/70 mb-8 leading-relaxed max-w-md">
               Your trusted partner for premium textile machinery imports from China to Pakistan. 
               Building bridges between Chinese innovation and Pakistani manufacturing excellence.
             </p>
-            <div className="flex space-x-3">
-              <a href="#" className="w-10 h-10 bg-linear-100 hover:bg-linear-200 rounded-lg flex items-center justify-center transition-colors">
-                <Linkedin className="h-5 w-5 text-linear-600" />
+            <div className="flex space-x-4">
+              <a href="#" className="w-12 h-12 glass-card rounded-xl flex items-center justify-center hover-lift transition-all duration-300 group">
+                <Linkedin className="h-5 w-5 text-white/70 group-hover:text-accent transition-colors" />
               </a>
-              <a href="#" className="w-10 h-10 bg-linear-100 hover:bg-linear-200 rounded-lg flex items-center justify-center transition-colors">
-                <Facebook className="h-5 w-5 text-linear-600" />
+              <a href="#" className="w-12 h-12 glass-card rounded-xl flex items-center justify-center hover-lift transition-all duration-300 group">
+                <Facebook className="h-5 w-5 text-white/70 group-hover:text-accent transition-colors" />
               </a>
-              <a href="#" className="w-10 h-10 bg-green-100 hover:bg-green-200 rounded-lg flex items-center justify-center transition-colors">
-                <MessageSquare className="h-5 w-5 text-green-600" />
+              <a href="#" className="w-12 h-12 glass-card rounded-xl flex items-center justify-center hover-lift transition-all duration-300 group">
+                <MessageSquare className="h-5 w-5 text-white/70 group-hover:text-green-400 transition-colors" />
               </a>
-              <a href="#" className="w-10 h-10 bg-linear-100 hover:bg-linear-200 rounded-lg flex items-center justify-center transition-colors">
-                <Mail className="h-5 w-5 text-linear-600" />
+              <a href="#" className="w-12 h-12 glass-card rounded-xl flex items-center justify-center hover-lift transition-all duration-300 group">
+                <Mail className="h-5 w-5 text-white/70 group-hover:text-accent transition-colors" />
               </a>
             </div>
           </div>
           
           {/* Quick Links */}
           <div>
-            <h4 className="font-medium text-linear-900 mb-4">Quick Links</h4>
-            <ul className="space-y-3">
+            <h4 className="font-semibold text-white mb-6">Quick Links</h4>
+            <ul className="space-y-4">
               <li>
                 <button 
                   onClick={() => scrollToSection("about")}
-                  className="text-linear-600 hover:text-linear-900 transition-colors text-left text-sm"
+                  className="text-white/70 hover:text-accent transition-colors text-left font-medium"
                 >
                   About
                 </button>
@@ -50,51 +58,56 @@ export default function Footer() {
               <li>
                 <button 
                   onClick={() => scrollToSection("products")}
-                  className="text-linear-600 hover:text-linear-900 transition-colors text-left text-sm"
+                  className="text-white/70 hover:text-accent transition-colors text-left font-medium"
                 >
                   Products
                 </button>
               </li>
               <li>
                 <button 
+                  onClick={() => scrollToSection("process")}
+                  className="text-white/70 hover:text-accent transition-colors text-left font-medium"
+                >
+                  Process
+                </button>
+              </li>
+              <li>
+                <button 
                   onClick={() => scrollToSection("contact")}
-                  className="text-linear-600 hover:text-linear-900 transition-colors text-left text-sm"
+                  className="text-white/70 hover:text-accent transition-colors text-left font-medium"
                 >
                   Contact
                 </button>
               </li>
               <li>
-                <a href="#" className="text-linear-600 hover:text-linear-900 transition-colors text-sm">Import Services</a>
-              </li>
-              <li>
-                <a href="#" className="text-linear-600 hover:text-linear-900 transition-colors text-sm">Technical Support</a>
+                <a href="#" className="text-white/70 hover:text-accent transition-colors font-medium">Import Services</a>
               </li>
             </ul>
           </div>
           
           {/* Contact Info */}
           <div>
-            <h4 className="font-medium text-linear-900 mb-4">Contact Info</h4>
-            <ul className="space-y-3">
-              <li className="text-linear-600 text-sm">
+            <h4 className="font-semibold text-white mb-6">Contact Info</h4>
+            <ul className="space-y-4">
+              <li className="text-white/70 font-medium">
                 +92 42 1234 5678
               </li>
-              <li className="text-linear-600 text-sm">
+              <li className="text-white/70 font-medium">
                 info@shanghaitraders.pk
               </li>
-              <li className="text-linear-600 text-sm">
+              <li className="text-white/70 font-medium">
                 Lahore & Karachi, Pakistan
               </li>
             </ul>
           </div>
         </div>
         
-        <div className="border-t border-linear-200 pt-8 flex flex-col sm:flex-row justify-between items-center">
-          <div className="text-linear-500 text-sm">
+        <div className="border-t border-white/20 pt-8 flex flex-col sm:flex-row justify-between items-center">
+          <div className="text-white/60 text-sm">
             © 2025 Shanghai Traders. All rights reserved.
           </div>
-          <div className="text-linear-500 text-sm mt-2 sm:mt-0">
-            Built by <span className="text-primary font-medium">Abubakar</span>
+          <div className="text-white/60 text-sm mt-2 sm:mt-0">
+            Built with ❤️ by <span className="text-accent font-semibold">Abubakar</span>
           </div>
         </div>
       </div>

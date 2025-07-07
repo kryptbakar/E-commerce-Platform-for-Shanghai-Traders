@@ -85,11 +85,20 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-24 bg-linear-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-24 bg-navy-dark overflow-hidden relative">
+      {/* Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-10 w-32 h-32 bg-accent/20 rounded-full animate-float"></div>
+        <div className="absolute bottom-20 right-10 w-24 h-24 bg-blue-500/30 rounded-lg animate-float" style={{animationDelay: '2s'}}></div>
+        <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-white/10 rounded-full animate-float" style={{animationDelay: '4s'}}></div>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
-          <h2 className="text-4xl sm:text-5xl font-bold text-linear-900 mb-6 tracking-tight">Get started today</h2>
-          <p className="text-xl text-linear-600 max-w-3xl mx-auto leading-relaxed">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+            Get Started <span className="text-gradient-gold">Today</span>
+          </h2>
+          <p className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
             Ready to transform your textile manufacturing operations? Connect with our import specialists 
             for professional consultation and competitive pricing.
           </p>
@@ -98,21 +107,25 @@ export default function Contact() {
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div className="space-y-8">
-            <div className="bg-white border border-linear-200 rounded-lg p-8">
-              <h3 className="text-xl font-semibold text-linear-900 mb-6">Get in touch</h3>
+            <div className="glass-card p-8 rounded-2xl">
+              <h3 className="text-2xl font-bold text-white mb-8">Get in Touch</h3>
               
               <div className="space-y-6">
                 {contactInfo.map((info, index) => {
                   const IconComponent = info.icon;
                   return (
-                    <div key={index} className="flex items-start space-x-4">
-                      <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${info.icon === MessageSquare ? 'bg-green-100' : 'bg-primary/10'}`}>
-                        <IconComponent className={`h-5 w-5 ${info.icon === MessageSquare ? 'text-green-600' : 'text-primary'}`} />
+                    <div key={index} className="flex items-start space-x-4 group">
+                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all group-hover:scale-110 ${
+                        info.icon === MessageSquare 
+                          ? 'bg-green-500/20 text-green-400' 
+                          : 'bg-accent/20 text-accent'
+                      }`}>
+                        <IconComponent className="h-6 w-6" />
                       </div>
                       <div>
-                        <h4 className="font-medium text-linear-900 mb-1">{info.title}</h4>
+                        <h4 className="font-semibold text-white mb-2">{info.title}</h4>
                         {info.details.map((detail, idx) => (
-                          <p key={idx} className="text-linear-600 text-sm">{detail}</p>
+                          <p key={idx} className="text-white/70 text-sm leading-relaxed">{detail}</p>
                         ))}
                       </div>
                     </div>
@@ -122,36 +135,36 @@ export default function Contact() {
             </div>
             
             {/* Business Hours */}
-            <div className="bg-white border border-linear-200 rounded-lg p-6">
-              <h4 className="font-medium text-linear-900 mb-4 flex items-center">
-                <Clock className="h-5 w-5 text-primary mr-2" />
+            <div className="glass-card p-6 rounded-2xl">
+              <h4 className="font-semibold text-white mb-6 flex items-center">
+                <Clock className="h-5 w-5 text-accent mr-3" />
                 Business Hours
               </h4>
-              <div className="space-y-3 text-sm">
-                <div className="flex justify-between text-linear-600">
-                  <span>Monday - Friday</span>
-                  <span className="font-medium text-linear-900">9:00 AM - 6:00 PM</span>
+              <div className="space-y-4 text-sm">
+                <div className="flex justify-between items-center">
+                  <span className="text-white/70">Monday - Friday</span>
+                  <span className="font-medium text-white bg-white/10 px-3 py-1 rounded-full">9:00 AM - 6:00 PM</span>
                 </div>
-                <div className="flex justify-between text-linear-600">
-                  <span>Saturday</span>
-                  <span className="font-medium text-linear-900">9:00 AM - 2:00 PM</span>
+                <div className="flex justify-between items-center">
+                  <span className="text-white/70">Saturday</span>
+                  <span className="font-medium text-white bg-white/10 px-3 py-1 rounded-full">9:00 AM - 2:00 PM</span>
                 </div>
-                <div className="flex justify-between text-linear-600">
-                  <span>Sunday</span>
-                  <span className="font-medium text-linear-900">Closed</span>
+                <div className="flex justify-between items-center">
+                  <span className="text-white/70">Sunday</span>
+                  <span className="font-medium text-white bg-red-500/20 text-red-300 px-3 py-1 rounded-full">Closed</span>
                 </div>
               </div>
             </div>
           </div>
           
           {/* Contact Form */}
-          <div className="bg-white border border-linear-200 rounded-lg p-8">
-            <h3 className="text-xl font-semibold text-linear-900 mb-6">Send us a message</h3>
+          <div className="glass-card p-8 rounded-2xl">
+            <h3 className="text-2xl font-bold text-white mb-8">Send Us a Message</h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="firstName" className="text-sm font-medium text-linear-700">
+                  <Label htmlFor="firstName" className="text-sm font-medium text-white/90 mb-2 block">
                     First Name *
                   </Label>
                   <Input
@@ -160,11 +173,11 @@ export default function Contact() {
                     onChange={(e) => handleInputChange("firstName", e.target.value)}
                     placeholder="Enter your first name"
                     required
-                    className="mt-1 border-linear-200 focus:border-primary focus:ring-primary/20"
+                    className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-accent focus:ring-accent/20"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="lastName" className="text-sm font-medium text-linear-700">
+                  <Label htmlFor="lastName" className="text-sm font-medium text-white/90 mb-2 block">
                     Last Name *
                   </Label>
                   <Input
@@ -173,13 +186,13 @@ export default function Contact() {
                     onChange={(e) => handleInputChange("lastName", e.target.value)}
                     placeholder="Enter your last name"
                     required
-                    className="mt-1 border-linear-200 focus:border-primary focus:ring-primary/20"
+                    className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-accent focus:ring-accent/20"
                   />
                 </div>
               </div>
               
               <div>
-                <Label htmlFor="email" className="text-sm font-medium text-linear-700">
+                <Label htmlFor="email" className="text-sm font-medium text-white/90 mb-2 block">
                   Email Address *
                 </Label>
                 <Input
@@ -189,12 +202,12 @@ export default function Contact() {
                   onChange={(e) => handleInputChange("email", e.target.value)}
                   placeholder="your.email@company.com"
                   required
-                  className="mt-1 border-linear-200 focus:border-primary focus:ring-primary/20"
+                  className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-accent focus:ring-accent/20"
                 />
               </div>
               
               <div>
-                <Label htmlFor="phone" className="text-sm font-medium text-linear-700">
+                <Label htmlFor="phone" className="text-sm font-medium text-white/90 mb-2 block">
                   Phone Number
                 </Label>
                 <Input
@@ -203,12 +216,12 @@ export default function Contact() {
                   value={formData.phone}
                   onChange={(e) => handleInputChange("phone", e.target.value)}
                   placeholder="+92 300 1234567"
-                  className="mt-1 border-linear-200 focus:border-primary focus:ring-primary/20"
+                  className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-accent focus:ring-accent/20"
                 />
               </div>
               
               <div>
-                <Label htmlFor="company" className="text-sm font-medium text-linear-700">
+                <Label htmlFor="company" className="text-sm font-medium text-white/90 mb-2 block">
                   Company Name
                 </Label>
                 <Input
@@ -216,30 +229,30 @@ export default function Contact() {
                   value={formData.company}
                   onChange={(e) => handleInputChange("company", e.target.value)}
                   placeholder="Your company name"
-                  className="mt-1 border-linear-200 focus:border-primary focus:ring-primary/20"
+                  className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-accent focus:ring-accent/20"
                 />
               </div>
               
               <div>
-                <Label className="text-sm font-medium text-linear-700">
+                <Label className="text-sm font-medium text-white/90 mb-2 block">
                   Inquiry Type
                 </Label>
                 <Select onValueChange={(value) => handleInputChange("inquiryType", value)}>
-                  <SelectTrigger className="mt-1 border-linear-200 focus:border-primary focus:ring-primary/20">
-                    <SelectValue placeholder="Select inquiry type" />
+                  <SelectTrigger className="bg-white/10 border-white/20 text-white focus:border-accent focus:ring-accent/20">
+                    <SelectValue placeholder="Select inquiry type" className="text-white/50" />
                   </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="general">General Inquiry</SelectItem>
-                    <SelectItem value="product">Product Information</SelectItem>
-                    <SelectItem value="quote">Price Quote</SelectItem>
-                    <SelectItem value="support">Technical Support</SelectItem>
-                    <SelectItem value="partnership">Partnership</SelectItem>
+                  <SelectContent className="bg-navy-dark border-white/20">
+                    <SelectItem value="general" className="text-white hover:bg-white/10">General Inquiry</SelectItem>
+                    <SelectItem value="product" className="text-white hover:bg-white/10">Product Information</SelectItem>
+                    <SelectItem value="quote" className="text-white hover:bg-white/10">Price Quote</SelectItem>
+                    <SelectItem value="support" className="text-white hover:bg-white/10">Technical Support</SelectItem>
+                    <SelectItem value="partnership" className="text-white hover:bg-white/10">Partnership</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
               
               <div>
-                <Label htmlFor="message" className="text-sm font-medium text-linear-700">
+                <Label htmlFor="message" className="text-sm font-medium text-white/90 mb-2 block">
                   Message *
                 </Label>
                 <Textarea
@@ -249,11 +262,14 @@ export default function Contact() {
                   placeholder="Describe your machinery requirements, quantities, timeline, and any specific technical needs..."
                   rows={4}
                   required
-                  className="mt-1 border-linear-200 focus:border-primary focus:ring-primary/20"
+                  className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-accent focus:ring-accent/20"
                 />
               </div>
               
-              <Button type="submit" className="w-full bg-primary hover:bg-blue-600 text-white transition-colors h-11">
+              <Button 
+                type="submit" 
+                className="w-full bg-accent hover:bg-yellow-500 text-navy-dark font-semibold py-3 rounded-full hover-lift transition-all duration-300 h-12"
+              >
                 Send Message
               </Button>
             </form>
