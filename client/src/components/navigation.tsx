@@ -25,9 +25,7 @@ export default function Navigation() {
 
   return (
     <>
-      <nav className={`fixed w-full top-0 z-50 transition-all duration-500 ${
-        isScrolled ? "navbar-glass" : "bg-textile-navy/95 backdrop-blur-md border-b border-white/20 shadow-lg"
-      }`}>
+      <nav className="fixed w-full top-0 z-50 bg-textile-navy border-b border-textile-gold/30 shadow-lg"
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center">
