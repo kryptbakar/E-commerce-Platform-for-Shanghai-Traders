@@ -26,12 +26,15 @@ export default function Navigation() {
   return (
     <>
       <nav className={`fixed w-full top-0 z-50 transition-all duration-500 ${
-        isScrolled ? "navbar-glass" : "bg-transparent"
+        isScrolled ? "navbar-glass" : "bg-textile-navy/80 backdrop-blur-md border-b border-white/10"
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center">
-              <div className="text-2xl font-bold text-white font-sans tracking-tight">Shanghai Traders</div>
+              <div className="text-2xl font-bold text-white font-sans tracking-tight drop-shadow-lg">
+                <span className="text-white">Shanghai</span>{" "}
+                <span className="text-textile-gold">Traders</span>
+              </div>
             </div>
             
             <div className="hidden md:flex items-center space-x-8">
