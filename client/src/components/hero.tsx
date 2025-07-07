@@ -31,10 +31,23 @@ export default function Hero() {
         <div className="max-w-5xl mx-auto">
           {/* Main Heading with Animation */}
           <div className="animate-fadeInUp">
-            <h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold text-textile-text mb-8 leading-tight font-sans">
-              <div className="flex flex-col items-center space-y-2">
-                <span className="glow-text tracking-wide">Shanghai</span>
-                <span className="text-gradient-gold tracking-wide">Traders</span>
+            <h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold text-textile-text mb-8 leading-tight">
+              <div className="flex flex-col items-center space-y-4">
+                <div className="relative">
+                  <span className="block text-white font-light tracking-[0.15em] uppercase text-lg sm:text-xl lg:text-2xl mb-2 opacity-90">
+                    Elite Textile Importers
+                  </span>
+                  <span className="glow-text tracking-[0.08em] font-extralight text-white drop-shadow-2xl">
+                    Shanghai
+                  </span>
+                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-px bg-gradient-to-r from-transparent via-textile-gold to-transparent opacity-60"></div>
+                </div>
+                <div className="relative">
+                  <span className="text-gradient-gold tracking-[0.12em] font-bold bg-clip-text text-transparent bg-gradient-to-r from-textile-gold via-textile-gold-light to-textile-gold drop-shadow-lg">
+                    TRADERS
+                  </span>
+                  <div className="absolute -top-1 -right-2 w-2 h-2 bg-textile-gold rounded-full animate-pulse opacity-80"></div>
+                </div>
               </div>
             </h1>
           </div>
