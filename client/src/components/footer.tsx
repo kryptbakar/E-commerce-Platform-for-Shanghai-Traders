@@ -20,7 +20,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           {/* Company Info */}
           <div className="md:col-span-2">
-            <div className="text-2xl font-bold text-white mb-4">
+            <div className="text-2xl font-bold text-white mb-4 font-sans tracking-tight">
               Shanghai <span className="text-gradient-gold">Traders</span>
             </div>
             <p className="text-white/70 mb-8 leading-relaxed max-w-md">
