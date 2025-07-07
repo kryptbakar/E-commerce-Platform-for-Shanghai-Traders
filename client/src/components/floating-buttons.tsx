@@ -2,7 +2,11 @@ import { useState, useEffect } from "react";
 import { ArrowUp, MessageSquare, Languages, Mail, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export default function FloatingButtons() {
+interface FloatingButtonsProps {
+  onCTAClick?: () => void;
+}
+
+export default function FloatingButtons({ onCTAClick }: FloatingButtonsProps = {}) {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [showWhatsApp, setShowWhatsApp] = useState(false);
 

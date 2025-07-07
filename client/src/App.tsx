@@ -4,6 +4,11 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
+import CustomCursor from "@/components/custom-cursor";
+import ScrollProgress from "@/components/scroll-progress";
+import LiveCounter from "@/components/live-counter";
+import MoodTheme from "@/components/mood-theme";
+import ParticleMouseTrail from "@/components/particle-mouse-trail";
 import Home from "@/pages/home";
 import ProductDetails from "@/pages/product-details";
 import NotFound from "@/pages/not-found";
@@ -23,6 +28,11 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <TooltipProvider>
+          <MoodTheme />
+          <CustomCursor />
+          <ScrollProgress />
+          <LiveCounter />
+          <ParticleMouseTrail />
           <Toaster />
           <Router />
         </TooltipProvider>

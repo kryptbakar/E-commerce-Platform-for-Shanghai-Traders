@@ -209,3 +209,269 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #475569;
 }
+
+/* ========== IMMERSIVE MOTION & LAYERING EFFECTS ========== */
+
+/* 3D Tilt Effects */
+@keyframes tilt3d {
+  0% { transform: perspective(1000px) rotateX(0deg) rotateY(0deg); }
+  100% { transform: perspective(1000px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)); }
+}
+
+.card-3d {
+  transform-style: preserve-3d;
+  transition: all 0.3s ease-out;
+  perspective: 1000px;
+}
+
+.card-3d:hover {
+  transform: perspective(1000px) rotateX(-5deg) rotateY(5deg) translateZ(10px);
+}
+
+/* Glass Sheen Effect */
+@keyframes glassSheen {
+  0% { transform: translateX(-100%) skewX(-15deg); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(200%) skewX(-15deg); opacity: 0; }
+}
+
+.glass-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-sheen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+  transform: translateX(-100%) skewX(-15deg);
+  transition: none;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.glass-sheen:hover::before {
+  animation: glassSheen 0.8s ease-out;
+}
+
+/* Flying Elements */
+@keyframes floatGentle {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(3px, -10px) rotate(1deg); }
+  66% { transform: translate(-3px, 5px) rotate(-1deg); }
+}
+
+.flying-element {
+  animation: floatGentle 6s ease-in-out infinite;
+}
+
+/* Confetti Burst Effect */
+@keyframes confettiBurst {
+  0% { transform: scale(0) rotate(0deg); opacity: 1; }
+  50% { transform: scale(1.2) rotate(180deg); opacity: 0.8; }
+  100% { transform: scale(0.8) rotate(360deg); opacity: 0; }
+}
+
+.confetti-particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(45deg, #FFD700, #FFA500);
+  animation: confettiBurst 1.2s ease-out forwards;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* Button Ripple Effect */
+@keyframes ripple {
+  0% { transform: scale(0); opacity: 1; }
+  100% { transform: scale(4); opacity: 0; }
+}
+
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ripple::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: scale(0);
+  left: var(--x, 50%);
+  top: var(--y, 50%);
+  pointer-events: none;
+}
+
+.btn-ripple:active::after {
+  animation: ripple 0.6s ease-out;
+}
+
+/* Light Pulse CTA */
+@keyframes lightPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7); }
+  50% { box-shadow: 0 0 0 20px rgba(255, 215, 0, 0); }
+}
+
+.light-pulse {
+  animation: lightPulse 2s infinite;
+}
+
+/* Elastic Animations */
+@keyframes elasticScale {
+  0% { transform: scale(1); }
+  20% { transform: scale(1.1); }
+  40% { transform: scale(0.95); }
+  60% { transform: scale(1.05); }
+  80% { transform: scale(0.98); }
+  100% { transform: scale(1); }
+}
+
+.elastic:active {
+  animation: elasticScale 0.4s ease-out;
+}
+
+/* Progress Bars */
+@keyframes progressFill {
+  from { width: 0%; }
+  to { width: var(--progress, 0%); }
+}
+
+.progress-bar {
+  height: 4px;
+  background: linear-gradient(90deg, #FFD700, #FFA500);
+  border-radius: 2px;
+  animation: progressFill 0.8s ease-out forwards;
+}
+
+/* Morphing Blob Transitions */
+@keyframes morphBlob {
+  0%, 100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    background-position: 0% 50%;
+  }
+  25% {
+    border-radius: 30% 70% 70% 30% / 50% 60% 40% 50%;
+    background-position: 50% 50%;
+  }
+  50% {
+    border-radius: 50% 50% 20% 80% / 25% 75% 25% 75%;
+    background-position: 100% 50%;
+  }
+  75% {
+    border-radius: 80% 20% 50% 50% / 75% 25% 75% 25%;
+    background-position: 50% 100%;
+  }
+}
+
+.morphing-blob {
+  background: linear-gradient(45deg, #FFD700, #FFA500, #0A2540);
+  background-size: 300% 300%;
+  animation: morphBlob 8s ease-in-out infinite;
+}
+
+/* Cursor Effects */
+.custom-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #FFD700;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: transform 0.1s ease-out;
+}
+
+/* Particle Trail */
+@keyframes particleFade {
+  to {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+.particle-trail {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, #FFD700, transparent);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.8;
+  animation: particleFade 1s linear forwards;
+  z-index: 998;
+}
+
+/* Live Counter Styles */
+.live-counter {
+  color: #00ff88;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+  animation: pulse 2s infinite;
+}
+
+/* Trust Badge Effects */
+.trust-badge {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05));
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.trust-badge:hover {
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Scroll Snap Experience */
+.scroll-snap-container {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.scroll-snap-section {
+  scroll-snap-align: start;
+  min-height: 100vh;
+}
+
+/* Mood-based Theme Classes */
+.theme-morning {
+  filter: sepia(10%) saturate(80%) brightness(0.9);
+}
+
+.theme-midday {
+  filter: brightness(1.1) saturate(110%);
+}
+
+.theme-evening {
+  filter: sepia(20%) saturate(90%) brightness(0.8) hue-rotate(10deg);
+}
+
+/* Enhanced Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .card-3d:hover,
+  .flying-element,
+  .glass-sheen:hover::before,
+  .confetti-particle,
+  .light-pulse,
+  .morphing-blob,
+  .btn-ripple:active::after {
+    animation: none;
+  }
+  
+  .card-3d:hover {
+    transform: none;
+  }
+  
+  .scroll-snap-container {
+    scroll-snap-type: none;
+  }
+}

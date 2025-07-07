@@ -89,7 +89,7 @@ export default function Products() {
               className="animate-fadeInUp"
               style={{animationDelay: `${0.8 + index * 0.1}s`}}
             >
-              <div className="glass-card p-6 rounded-2xl hover-lift group">
+              <div className="glass-card card-3d glass-sheen p-6 rounded-2xl hover-lift group">
                 <div className="relative overflow-hidden rounded-xl mb-6">
                   <img 
                     src={product.image} 
@@ -126,10 +126,10 @@ export default function Products() {
                   </div>
                   
                   <Button 
-                    className="w-full bg-white/10 hover:bg-accent hover:text-navy-dark text-white border border-white/20 hover:border-accent rounded-full transition-all duration-300"
+                    className="w-full bg-white/10 hover:bg-accent hover:text-navy-dark text-white border border-white/20 hover:border-accent rounded-full transition-all duration-300 btn-ripple elastic light-pulse"
                     onClick={() => navigate(`/product/${product.id}`)}
                   >
-                    View Specifications
+                    🎯 View Specifications
                   </Button>
                 </div>
               </div>
