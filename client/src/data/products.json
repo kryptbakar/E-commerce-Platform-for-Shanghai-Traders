@@ -1,0 +1,108 @@
+{
+  "categories": [
+    {
+      "id": "carding",
+      "name": "Carding Machines",
+      "icon": "cogs",
+      "description": "High-performance carding equipment for fiber preparation"
+    },
+    {
+      "id": "spinning",
+      "name": "Spinning Machines", 
+      "icon": "rotate-cw",
+      "description": "Advanced spinning technology for yarn production"
+    },
+    {
+      "id": "dyeing",
+      "name": "Dyeing & Finishing",
+      "icon": "palette",
+      "description": "Complete dyeing and finishing machinery solutions"
+    },
+    {
+      "id": "spare-parts",
+      "name": "Spare Parts",
+      "icon": "wrench",
+      "description": "Genuine spare parts and maintenance components"
+    }
+  ],
+  "products": [
+    {
+      "id": "a186f-carding",
+      "name": "A186F Carding Machine",
+      "category": "carding",
+      "image": "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
+      "origin": "China",
+      "specifications": {
+        "Working Width": "1200mm",
+        "Production": "45-60 kg/hr",
+        "Power": "15 kW",
+        "Delivery": "25-30 cylinders"
+      }
+    },
+    {
+      "id": "fa506-ring-spinning",
+      "name": "FA506 Ring Spinning Frame",
+      "category": "spinning",
+      "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
+      "origin": "China",
+      "specifications": {
+        "Spindles": "1200",
+        "Gauge": "70mm",
+        "Speed": "18,000 rpm",
+        "Count Range": "Ne 6-60"
+      }
+    },
+    {
+      "id": "ht-dyeing",
+      "name": "HT Dyeing Machine",
+      "category": "dyeing",
+      "image": "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
+      "origin": "China",
+      "specifications": {
+        "Capacity": "500 kg",
+        "Temperature": "140°C",
+        "Pressure": "4 bar",
+        "Automation": "PLC Control"
+      }
+    },
+    {
+      "id": "card-clothing-wire",
+      "name": "Card Clothing Wire",
+      "category": "spare-parts",
+      "image": "https://images.unsplash.com/photo-1581094271901-8022df4466f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
+      "origin": "China",
+      "specifications": {
+        "Material": "High Carbon Steel",
+        "Point Density": "120 PPSI",
+        "Width": "1016mm",
+        "Application": "Carding"
+      }
+    },
+    {
+      "id": "jw408-water-jet",
+      "name": "JW408 Water Jet Loom",
+      "category": "weaving",
+      "image": "https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
+      "origin": "China",
+      "specifications": {
+        "Reed Width": "190cm",
+        "Speed": "750 rpm",
+        "Weft Insertion": "Water Jet",
+        "Shedding": "Cam Motion"
+      }
+    },
+    {
+      "id": "stenter-machine",
+      "name": "Stenter Machine",
+      "category": "dyeing",
+      "image": "https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=250",
+      "origin": "China",
+      "specifications": {
+        "Working Width": "1800mm",
+        "Temperature": "220°C",
+        "Chambers": "8",
+        "Speed": "1-60 m/min"
+      }
+    }
+  ]
+}
