@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation } from "wouter";
 import { Cog, RotateCw, Palette, Wrench, Filter, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ProductCard from "./product-card";
@@ -6,6 +7,7 @@ import productsData from "@/data/products.json";
 
 export default function Products() {
   const [activeFilter, setActiveFilter] = useState("all");
+  const [, navigate] = useLocation();
   
   const iconMap = {
     cogs: Cog,
@@ -125,7 +127,7 @@ export default function Products() {
                   
                   <Button 
                     className="w-full bg-white/10 hover:bg-accent hover:text-navy-dark text-white border border-white/20 hover:border-accent rounded-full transition-all duration-300"
-                    onClick={() => console.log(`View details for ${product.name}`)}
+                    onClick={() => navigate(`/product/${product.id}`)}
                   >
                     View Specifications
                   </Button>

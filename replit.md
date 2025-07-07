@@ -85,8 +85,23 @@ Shanghai Traders is a modern web application built for a textile machinery impor
 - **Runtime Error Overlay**: Enhanced error reporting in development
 - **Cartographer**: Replit-specific development tools integration
 
+## Recent Changes
+- **July 07, 2025**: Complete redesign with dark navy theme and glassmorphism effects
+- **Advanced Features Added**:
+  - Product detail pages with image galleries and specifications
+  - Floating WhatsApp, email, and phone buttons with animations
+  - Newsletter popup with delay and localStorage
+  - Animated counters for statistics
+  - Dark mode toggle with comprehensive theming
+  - Particle background effects with connecting lines
+  - FAQ section with collapsible cards
+  - Enhanced accessibility with reduced motion support
+  - Product filtering with smooth transitions
+  - Comprehensive glassmorphism effects throughout
+
 ## Changelog
 - July 07, 2025. Initial setup
+- July 07, 2025. Major redesign with modern features and advanced animations
 
 ## User Preferences
 

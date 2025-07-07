@@ -1,4 +1,5 @@
 import { Handshake, Globe, Award, Users, TrendingUp, Shield } from "lucide-react";
+import AnimatedCounter from "./animated-counter";
 
 export default function About() {
   const achievements = [
@@ -99,14 +100,22 @@ export default function About() {
               {/* Floating stats cards */}
               <div className="absolute -bottom-6 -left-6 glass-card p-4 rounded-xl z-20 animate-float" style={{animationDelay: '1s'}}>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-white">15+</div>
+                  <AnimatedCounter 
+                    end={15} 
+                    suffix="+" 
+                    className="text-2xl font-bold text-white"
+                  />
                   <div className="text-sm text-white/80">Years</div>
                 </div>
               </div>
               
               <div className="absolute -top-6 -right-6 glass-card p-4 rounded-xl z-20 animate-float" style={{animationDelay: '2s'}}>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-white">200+</div>
+                  <AnimatedCounter 
+                    end={200} 
+                    suffix="+" 
+                    className="text-2xl font-bold text-white"
+                  />
                   <div className="text-sm text-white/80">Clients</div>
                 </div>
               </div>
@@ -129,7 +138,11 @@ export default function About() {
                   <div className="w-16 h-16 bg-navy-dark rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-navy-medium transition-colors">
                     <IconComponent className="h-8 w-8 text-white" />
                   </div>
-                  <div className="text-3xl lg:text-4xl font-bold text-gray-900 mb-2">{achievement.number}</div>
+                  <AnimatedCounter 
+                    end={parseInt(achievement.number.replace(/\D/g, ""))} 
+                    suffix={achievement.number.includes("+") ? "+" : achievement.number.includes("%") ? "%" : ""} 
+                    className="text-3xl lg:text-4xl font-bold text-gray-900 mb-2 block"
+                  />
                   <div className="text-gray-600 font-medium">{achievement.label}</div>
                 </div>
               );
