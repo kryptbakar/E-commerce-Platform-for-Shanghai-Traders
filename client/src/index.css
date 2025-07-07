@@ -577,7 +577,20 @@
 /* Classy Font Classes */
 .font-playfair { font-family: 'Playfair Display', serif; }
 .font-cormorant { font-family: 'Cormorant Garamond', serif; }
-.font-crimson { font-family: 'Crimson Text', serif; }
+.font-crimson { 
+  font-family: 'Crimson Text', serif; 
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Prevent unwanted animations */
+.transform-none {
+  transform: none !important;
+}
+
+.no-float {
+  animation: none !important;
+}
 
 /* Enhanced Accessibility */
 @media (prefers-reduced-motion: reduce) {

@@ -129,8 +129,8 @@ export default function Contact() {
 
         <div className="grid lg:grid-cols-3 gap-12 items-start">
           {/* Elite Contact Methods Grid */}
-          <div className="lg:col-span-1">
-            <div className="elite-card p-8 mb-8">
+          <div className="lg:col-span-1 no-float">
+            <div className="elite-card p-8 mb-8 transform-none">
               <div className="flex items-center gap-3 mb-6">
                 <Zap className="w-6 h-6 text-textile-gold" />
                 <h3 className="text-2xl font-bold text-textile-gold font-playfair">Elite Contact Hub</h3>
@@ -141,8 +141,7 @@ export default function Contact() {
                   return (
                     <div 
                       key={index} 
-                      className="group hover-lift textile-float"
-                      style={{ animationDelay: `${index * 0.2}s` }}
+                      className="group hover-lift"
                     >
                       <div className="flex items-start gap-4 p-4 rounded-xl bg-textile-navy-light/50 border border-textile-gold/20 hover:border-textile-gold/40 transition-all duration-300">
                         <div className={`w-12 h-12 bg-textile-gold/20 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-textile-gold/30 transition-colors`}>
@@ -163,7 +162,7 @@ export default function Contact() {
             </div>
 
             {/* Elite Business Hours */}
-            <div className="elite-card p-6">
+            <div className="elite-card p-6 transform-none">
               <div className="flex items-center gap-3 mb-4">
                 <Clock className="w-5 h-5 text-textile-gold" />
                 <h4 className="font-semibold text-textile-gold font-cormorant">Elite Business Hours</h4>
