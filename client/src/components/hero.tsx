@@ -31,9 +31,11 @@ export default function Hero() {
         <div className="max-w-5xl mx-auto">
           {/* Main Heading with Animation */}
           <div className="animate-fadeInUp">
-            <h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold text-textile-text mb-8 leading-tight">
-              <span className="block glow-text">Shanghai</span>
-              <span className="block text-gradient-gold textile-float">Traders</span>
+            <h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold text-textile-text mb-8 leading-tight font-playfair">
+              <div className="flex flex-col items-center">
+                <span className="glow-text">Shanghai</span>
+                <span className="text-gradient-gold">Traders</span>
+              </div>
             </h1>
           </div>
           

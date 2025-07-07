@@ -27,10 +27,10 @@ export default function About() {
           {/* Left: Content */}
           <div className="animate-slideInLeft space-y-8">
             <div>
-              <h3 className="text-3xl font-bold text-textile-gold mb-6 glow-text">
+              <h3 className="text-4xl font-bold text-textile-gold mb-6 glow-text font-playfair">
                 Your Elite Manufacturing Partner
               </h3>
-              <p className="text-lg text-textile-text/80 leading-relaxed mb-6">
+              <p className="text-lg text-textile-text/80 leading-relaxed mb-6 font-cormorant">
                 Shanghai Traders has been at the forefront of textile machinery imports for over a decade, 
                 specializing in bringing cutting-edge Chinese manufacturing technology to Pakistan's 
                 thriving textile industry.
