@@ -20,35 +20,39 @@ export default function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-      <img 
-        src={product.image} 
-        alt={product.name}
-        className="w-full h-48 object-cover"
-      />
-      <div className="p-6">
-        <div className="flex justify-between items-start mb-3">
-          <h4 className="text-xl font-bold text-industrial-800">{product.name}</h4>
-          <Badge variant="secondary" className="bg-green-100 text-green-800">
+    <div className="group bg-white border border-linear-200 hover:border-linear-300 rounded-lg overflow-hidden transition-all hover:shadow-sm">
+      <div className="relative overflow-hidden">
+        <img 
+          src={product.image} 
+          alt={product.name}
+          className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+        <div className="absolute top-3 right-3">
+          <Badge variant="secondary" className="bg-white/90 text-linear-700 border-linear-200">
             <MapPin className="h-3 w-3 mr-1" />
             {product.origin}
           </Badge>
         </div>
+      </div>
+      
+      <div className="p-6">
+        <h4 className="text-lg font-semibold text-linear-900 mb-4">{product.name}</h4>
         
-        <div className="space-y-2 text-sm text-industrial-600 mb-4">
-          {Object.entries(product.specifications).map(([key, value]) => (
-            <div key={key}>
-              <strong>{key}:</strong> <span>{value}</span>
+        <div className="space-y-3 mb-6">
+          {Object.entries(product.specifications).slice(0, 3).map(([key, value]) => (
+            <div key={key} className="flex justify-between items-center text-sm">
+              <span className="text-linear-600">{key}</span>
+              <span className="font-medium text-linear-900">{value}</span>
             </div>
           ))}
         </div>
         
         <Button 
-          className="w-full bg-primary text-white hover:bg-blue-700 transition-colors"
+          variant="outline"
+          className="w-full border-linear-200 text-linear-700 hover:bg-linear-50 hover:border-linear-300 transition-colors"
           onClick={handleViewDetails}
         >
-          <Info className="h-4 w-4 mr-2" />
-          View Details
+          View Specifications
         </Button>
       </div>
     </div>

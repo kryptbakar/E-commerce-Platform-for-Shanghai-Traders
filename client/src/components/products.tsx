@@ -19,36 +19,44 @@ export default function Products() {
   };
 
   return (
-    <section id="products" className="py-20 bg-industrial-50">
+    <section id="products" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-industrial-800 mb-6">Our Product Categories</h2>
-          <p className="text-xl text-industrial-500 max-w-3xl mx-auto leading-relaxed">
-            Comprehensive range of textile machinery and spare parts imported directly from China
+        <div className="text-center mb-20">
+          <h2 className="text-4xl sm:text-5xl font-bold text-linear-900 mb-6 tracking-tight">
+            Machinery and equipment tracking you'll love using
+          </h2>
+          <p className="text-xl text-linear-600 max-w-3xl mx-auto leading-relaxed">
+            Optimized for efficiency and reliability. Source machinery in seconds, discuss specifications 
+            in context, and scale your manufacturing operations with equipment tailored to your needs.
           </p>
         </div>
         
         {/* Product Categories */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
           {productsData.categories.map((category) => {
             const IconComponent = iconMap[category.icon as keyof typeof iconMap];
             return (
-              <div key={category.id} className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer">
-                <div className="text-primary text-4xl mb-4 text-center">
-                  <IconComponent className="h-10 w-10 mx-auto" />
+              <div key={category.id} className="group bg-linear-50 hover:bg-white border border-linear-200 hover:border-linear-300 p-6 rounded-lg transition-all cursor-pointer">
+                <div className="w-12 h-12 bg-primary/10 group-hover:bg-primary/20 rounded-lg flex items-center justify-center mb-4 transition-colors">
+                  <IconComponent className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold text-industrial-800 mb-3 text-center">{category.name}</h3>
-                <p className="text-industrial-600 text-center">{category.description}</p>
+                <h3 className="text-lg font-semibold text-linear-900 mb-2">{category.name}</h3>
+                <p className="text-linear-600 text-sm leading-relaxed">{category.description}</p>
               </div>
             );
           })}
         </div>
         
         {/* Featured Products */}
-        <div className="mb-12">
-          <h3 className="text-3xl font-bold text-industrial-800 mb-8 text-center">Featured Machinery</h3>
+        <div className="mb-20">
+          <div className="flex items-center justify-between mb-8">
+            <div>
+              <h3 className="text-2xl font-bold text-linear-900 mb-2">Featured Equipment</h3>
+              <p className="text-linear-600">Premium machinery sourced directly from trusted Chinese manufacturers</p>
+            </div>
+          </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {productsData.products.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
@@ -56,15 +64,27 @@ export default function Products() {
         </div>
         
         {/* CTA Section */}
-        <div className="text-center bg-primary rounded-2xl p-8 text-white">
-          <h3 className="text-2xl font-bold mb-4">Need Custom Machinery Solutions?</h3>
-          <p className="text-lg mb-6 text-blue-100">Contact us for specialized equipment sourcing and custom import requirements</p>
-          <Button 
-            className="bg-accent text-white hover:bg-yellow-500 transition-colors px-8 py-3 font-semibold"
-            onClick={() => scrollToSection("contact")}
-          >
-            Request Quote
-          </Button>
+        <div className="bg-linear-50 border border-linear-200 rounded-2xl p-8 lg:p-12 text-center">
+          <h3 className="text-2xl font-bold text-linear-900 mb-4">Need specialized machinery solutions?</h3>
+          <p className="text-lg text-linear-600 mb-8 max-w-2xl mx-auto">
+            Connect with our import specialists for custom equipment sourcing, technical consultations, 
+            and end-to-end logistics support.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button 
+              className="bg-primary hover:bg-blue-600 text-white px-8 py-3 font-medium"
+              onClick={() => scrollToSection("contact")}
+            >
+              Schedule Consultation
+            </Button>
+            <Button 
+              variant="outline"
+              className="border border-linear-300 text-linear-700 hover:bg-white px-8 py-3 font-medium"
+              onClick={() => scrollToSection("contact")}
+            >
+              Request Custom Quote
+            </Button>
+          </div>
         </div>
       </div>
     </section>

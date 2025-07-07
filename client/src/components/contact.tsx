@@ -85,33 +85,34 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-white">
+    <section id="contact" className="py-24 bg-linear-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-industrial-800 mb-6">Get In Touch</h2>
-          <p className="text-xl text-industrial-500 max-w-3xl mx-auto leading-relaxed">
-            Ready to import quality textile machinery? Contact our team for professional consultation and competitive pricing.
+        <div className="text-center mb-20">
+          <h2 className="text-4xl sm:text-5xl font-bold text-linear-900 mb-6 tracking-tight">Get started today</h2>
+          <p className="text-xl text-linear-600 max-w-3xl mx-auto leading-relaxed">
+            Ready to transform your textile manufacturing operations? Connect with our import specialists 
+            for professional consultation and competitive pricing.
           </p>
         </div>
         
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-bold text-industrial-800 mb-6">Contact Information</h3>
+            <div className="bg-white border border-linear-200 rounded-lg p-8">
+              <h3 className="text-xl font-semibold text-linear-900 mb-6">Get in touch</h3>
               
               <div className="space-y-6">
                 {contactInfo.map((info, index) => {
                   const IconComponent = info.icon;
                   return (
                     <div key={index} className="flex items-start space-x-4">
-                      <div className={`text-xl mt-1 ${info.icon === MessageSquare ? 'text-green-600' : 'text-primary'}`}>
-                        <IconComponent className="h-5 w-5" />
+                      <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${info.icon === MessageSquare ? 'bg-green-100' : 'bg-primary/10'}`}>
+                        <IconComponent className={`h-5 w-5 ${info.icon === MessageSquare ? 'text-green-600' : 'text-primary'}`} />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-industrial-800 mb-1">{info.title}</h4>
+                        <h4 className="font-medium text-linear-900 mb-1">{info.title}</h4>
                         {info.details.map((detail, idx) => (
-                          <p key={idx} className="text-industrial-600">{detail}</p>
+                          <p key={idx} className="text-linear-600 text-sm">{detail}</p>
                         ))}
                       </div>
                     </div>
@@ -121,64 +122,64 @@ export default function Contact() {
             </div>
             
             {/* Business Hours */}
-            <div className="bg-industrial-50 p-6 rounded-xl">
-              <h4 className="font-semibold text-industrial-800 mb-3 flex items-center">
+            <div className="bg-white border border-linear-200 rounded-lg p-6">
+              <h4 className="font-medium text-linear-900 mb-4 flex items-center">
                 <Clock className="h-5 w-5 text-primary mr-2" />
                 Business Hours
               </h4>
-              <div className="space-y-2 text-industrial-600">
-                <div className="flex justify-between">
+              <div className="space-y-3 text-sm">
+                <div className="flex justify-between text-linear-600">
                   <span>Monday - Friday</span>
-                  <span>9:00 AM - 6:00 PM</span>
+                  <span className="font-medium text-linear-900">9:00 AM - 6:00 PM</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between text-linear-600">
                   <span>Saturday</span>
-                  <span>9:00 AM - 2:00 PM</span>
+                  <span className="font-medium text-linear-900">9:00 AM - 2:00 PM</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between text-linear-600">
                   <span>Sunday</span>
-                  <span>Closed</span>
+                  <span className="font-medium text-linear-900">Closed</span>
                 </div>
               </div>
             </div>
           </div>
           
           {/* Contact Form */}
-          <div className="bg-industrial-50 p-8 rounded-xl">
-            <h3 className="text-2xl font-bold text-industrial-800 mb-6">Send Us a Message</h3>
+          <div className="bg-white border border-linear-200 rounded-lg p-8">
+            <h3 className="text-xl font-semibold text-linear-900 mb-6">Send us a message</h3>
             
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="firstName" className="text-sm font-semibold text-industrial-700">
+                  <Label htmlFor="firstName" className="text-sm font-medium text-linear-700">
                     First Name *
                   </Label>
                   <Input
                     id="firstName"
                     value={formData.firstName}
                     onChange={(e) => handleInputChange("firstName", e.target.value)}
-                    placeholder="Your first name"
+                    placeholder="Enter your first name"
                     required
-                    className="mt-2"
+                    className="mt-1 border-linear-200 focus:border-primary focus:ring-primary/20"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="lastName" className="text-sm font-semibold text-industrial-700">
+                  <Label htmlFor="lastName" className="text-sm font-medium text-linear-700">
                     Last Name *
                   </Label>
                   <Input
                     id="lastName"
                     value={formData.lastName}
                     onChange={(e) => handleInputChange("lastName", e.target.value)}
-                    placeholder="Your last name"
+                    placeholder="Enter your last name"
                     required
-                    className="mt-2"
+                    className="mt-1 border-linear-200 focus:border-primary focus:ring-primary/20"
                   />
                 </div>
               </div>
               
               <div>
-                <Label htmlFor="email" className="text-sm font-semibold text-industrial-700">
+                <Label htmlFor="email" className="text-sm font-medium text-linear-700">
                   Email Address *
                 </Label>
                 <Input
@@ -188,12 +189,12 @@ export default function Contact() {
                   onChange={(e) => handleInputChange("email", e.target.value)}
                   placeholder="your.email@company.com"
                   required
-                  className="mt-2"
+                  className="mt-1 border-linear-200 focus:border-primary focus:ring-primary/20"
                 />
               </div>
               
               <div>
-                <Label htmlFor="phone" className="text-sm font-semibold text-industrial-700">
+                <Label htmlFor="phone" className="text-sm font-medium text-linear-700">
                   Phone Number
                 </Label>
                 <Input
@@ -202,12 +203,12 @@ export default function Contact() {
                   value={formData.phone}
                   onChange={(e) => handleInputChange("phone", e.target.value)}
                   placeholder="+92 300 1234567"
-                  className="mt-2"
+                  className="mt-1 border-linear-200 focus:border-primary focus:ring-primary/20"
                 />
               </div>
               
               <div>
-                <Label htmlFor="company" className="text-sm font-semibold text-industrial-700">
+                <Label htmlFor="company" className="text-sm font-medium text-linear-700">
                   Company Name
                 </Label>
                 <Input
@@ -215,16 +216,16 @@ export default function Contact() {
                   value={formData.company}
                   onChange={(e) => handleInputChange("company", e.target.value)}
                   placeholder="Your company name"
-                  className="mt-2"
+                  className="mt-1 border-linear-200 focus:border-primary focus:ring-primary/20"
                 />
               </div>
               
               <div>
-                <Label className="text-sm font-semibold text-industrial-700">
+                <Label className="text-sm font-medium text-linear-700">
                   Inquiry Type
                 </Label>
                 <Select onValueChange={(value) => handleInputChange("inquiryType", value)}>
-                  <SelectTrigger className="mt-2">
+                  <SelectTrigger className="mt-1 border-linear-200 focus:border-primary focus:ring-primary/20">
                     <SelectValue placeholder="Select inquiry type" />
                   </SelectTrigger>
                   <SelectContent>
@@ -238,22 +239,21 @@ export default function Contact() {
               </div>
               
               <div>
-                <Label htmlFor="message" className="text-sm font-semibold text-industrial-700">
+                <Label htmlFor="message" className="text-sm font-medium text-linear-700">
                   Message *
                 </Label>
                 <Textarea
                   id="message"
                   value={formData.message}
                   onChange={(e) => handleInputChange("message", e.target.value)}
-                  placeholder="Please describe your requirements, including specific machinery types, quantities, and timeline..."
-                  rows={5}
+                  placeholder="Describe your machinery requirements, quantities, timeline, and any specific technical needs..."
+                  rows={4}
                   required
-                  className="mt-2"
+                  className="mt-1 border-linear-200 focus:border-primary focus:ring-primary/20"
                 />
               </div>
               
-              <Button type="submit" className="w-full bg-primary text-white hover:bg-blue-700 transition-colors">
-                <Mail className="h-4 w-4 mr-2" />
+              <Button type="submit" className="w-full bg-primary hover:bg-blue-600 text-white transition-colors h-11">
                 Send Message
               </Button>
             </form>
