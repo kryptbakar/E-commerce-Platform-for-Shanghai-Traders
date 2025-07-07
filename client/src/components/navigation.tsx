@@ -26,7 +26,7 @@ export default function Navigation() {
   return (
     <>
       <nav className={`fixed w-full top-0 z-50 transition-all duration-500 ${
-        isScrolled ? "glass" : "bg-transparent"
+        isScrolled ? "navbar-glass" : "bg-transparent"
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
@@ -37,31 +37,31 @@ export default function Navigation() {
             <div className="hidden md:flex items-center space-x-8">
               <button 
                 onClick={() => scrollToSection("hero")}
-                className="text-white/80 hover:text-white transition-colors duration-300 font-medium"
+                className="text-textile-text/80 hover:text-textile-gold transition-colors duration-300 font-medium hover:scale-105"
               >
                 Home
               </button>
               <button 
                 onClick={() => scrollToSection("about")}
-                className="text-white/80 hover:text-white transition-colors duration-300 font-medium"
+                className="text-textile-text/80 hover:text-textile-gold transition-colors duration-300 font-medium hover:scale-105"
               >
                 About
               </button>
               <button 
                 onClick={() => scrollToSection("products")}
-                className="text-white/80 hover:text-white transition-colors duration-300 font-medium"
+                className="text-textile-text/80 hover:text-textile-gold transition-colors duration-300 font-medium hover:scale-105"
               >
                 Products
               </button>
               <button 
                 onClick={() => scrollToSection("process")}
-                className="text-white/80 hover:text-white transition-colors duration-300 font-medium"
+                className="text-textile-text/80 hover:text-textile-gold transition-colors duration-300 font-medium hover:scale-105"
               >
                 Process
               </button>
               <button 
                 onClick={() => scrollToSection("contact")}
-                className="text-white/80 hover:text-white transition-colors duration-300 font-medium"
+                className="text-textile-text/80 hover:text-textile-gold transition-colors duration-300 font-medium hover:scale-105"
               >
                 Contact
               </button>

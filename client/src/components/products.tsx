@@ -89,7 +89,7 @@ export default function Products() {
               className="animate-fadeInUp"
               style={{animationDelay: `${0.8 + index * 0.1}s`}}
             >
-              <div className="glass-card card-3d glass-sheen p-6 rounded-2xl hover-lift group">
+              <div className="elite-card card-3d glass-sheen p-6 rounded-2xl hover-lift group">
                 <div className="relative overflow-hidden rounded-xl mb-6">
                   <img 
                     src={product.image} 

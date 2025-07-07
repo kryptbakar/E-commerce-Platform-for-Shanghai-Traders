@@ -18,7 +18,7 @@ export default function Home() {
   const [showConfetti, setShowConfetti] = useState(false);
 
   return (
-    <div className="min-h-screen smooth-scroll relative scroll-snap-container">
+    <div className="min-h-screen smooth-scroll relative scroll-snap-container bg-textile-navy">
       <ParticleBackground />
       <ThemeToggle />
       <Navigation />

@@ -27,10 +27,10 @@ export default function About() {
           {/* Left: Content */}
           <div className="animate-slideInLeft space-y-8">
             <div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-6">
-                Your Trusted Import Partner
+              <h3 className="text-3xl font-bold text-textile-gold mb-6 glow-text">
+                Your Elite Manufacturing Partner
               </h3>
-              <p className="text-lg text-gray-600 leading-relaxed mb-6">
+              <p className="text-lg text-textile-text/80 leading-relaxed mb-6">
                 Shanghai Traders has been at the forefront of textile machinery imports for over a decade, 
                 specializing in bringing cutting-edge Chinese manufacturing technology to Pakistan's 
                 thriving textile industry.
@@ -134,16 +134,16 @@ export default function About() {
             {achievements.map((achievement, index) => {
               const IconComponent = achievement.icon;
               return (
-                <div key={index} className="text-center group hover-lift">
-                  <div className="w-16 h-16 bg-navy-dark rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-navy-medium transition-colors">
-                    <IconComponent className="h-8 w-8 text-white" />
+                <div key={index} className="text-center group hover-lift textile-float" style={{ animationDelay: `${index * 0.5}s` }}>
+                  <div className="w-16 h-16 bg-textile-gold/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-textile-gold-light/30 transition-colors border border-textile-gold/30">
+                    <IconComponent className="h-8 w-8 text-textile-gold" />
                   </div>
                   <AnimatedCounter 
                     end={parseInt(achievement.number.replace(/\D/g, ""))} 
                     suffix={achievement.number.includes("+") ? "+" : achievement.number.includes("%") ? "%" : ""} 
-                    className="text-3xl lg:text-4xl font-bold text-gray-900 mb-2 block"
+                    className="text-3xl lg:text-4xl font-bold text-textile-gold mb-2 block glow-text"
                   />
-                  <div className="text-gray-600 font-medium">{achievement.label}</div>
+                  <div className="text-textile-text/70 font-medium">{achievement.label}</div>
                 </div>
               );
             })}

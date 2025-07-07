@@ -99,12 +99,19 @@ Shanghai Traders is a modern web application built for a textile machinery impor
   - Product filtering with smooth transitions
   - Comprehensive glassmorphism effects throughout
 
+## Elite Textile Industry Design System
+- **Color Palette**: Rich deep navy (#0A1F2D) with industrial gold gradient (#E9C46A → #F4A261)
+- **Typography**: Sora and IBM Plex Sans for precision and elegance
+- **Glassmorphism**: Elite cards with enhanced blur effects and gold borders
+- **Button System**: Rounded minimal buttons with soft shadows and gradient fills
+- **Navigation**: Semi-transparent glass-style navbar with textile-gold hover states
+
 ## Immersive Motion & Layering Features
 - **3D Tilt Effects**: Card-3d hover animations with perspective transforms
 - **Glass Sheen Animations**: Swipe reflection effects on product cards
 - **Scroll Snap Experience**: Apple-style section snapping navigation
 - **Morphing Blob Backgrounds**: Animated organic shapes with color gradients
-- **Flying Elements**: Gentle floating animations throughout the interface
+- **Textile-Inspired Animations**: Thread loops, wave patterns, and floating shapes
 - **Confetti Burst**: CTA click celebrations with particle animations
 - **Button Ripple Effects**: Material Design-style click feedback
 - **Light Pulse CTAs**: Glowing animation rings on primary buttons
@@ -114,8 +121,9 @@ Shanghai Traders is a modern web application built for a textile machinery impor
 - **Particle Mouse Trail**: Golden particle trail following cursor movement
 - **Live Counter Widget**: Real-time visitor statistics with location
 - **Trust Badges**: Premium certification badges with hover effects
-- **Mood-based Theming**: Automatic time-of-day visual adjustments
-- **Enhanced Emoji CTAs**: Premium button text with emoji enhancements
+- **Creative Textile Visual**: Custom SVG textile department imagery with animated machinery
+- **Glow Text Effects**: Elegant golden text shadows for headings
+- **Radial Overlays**: Gradient depth effects throughout sections
 
 ## Changelog
 - July 07, 2025. Initial setup

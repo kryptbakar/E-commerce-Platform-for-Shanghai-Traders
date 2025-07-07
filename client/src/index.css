@@ -71,7 +71,9 @@
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Sora', 'IBM Plex Sans', 'Inter', system-ui, sans-serif;
+    background-color: #0A1F2D;
+    color: #F9FAFB;
   }
   
   html {
@@ -80,25 +82,52 @@
 }
 
 @layer utilities {
-  /* Navy theme utilities */
-  .bg-navy-dark { background-color: var(--navy-dark); }
-  .bg-navy-medium { background-color: var(--navy-medium); }
+  /* Elite Textile Industry Theme Variables */
+  :root {
+    --textile-navy: #0A1F2D;
+    --textile-navy-light: #132E40;
+    --textile-gold: #E9C46A;
+    --textile-gold-light: #F4A261;
+    --textile-text: #F9FAFB;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Elite theme utilities */
+  .bg-textile-navy { background-color: var(--textile-navy); }
+  .bg-textile-navy-light { background-color: var(--textile-navy-light); }
+  .bg-navy-dark { background-color: var(--textile-navy); }
+  .bg-navy-medium { background-color: var(--textile-navy-light); }
   .bg-navy-light { background-color: var(--navy-light); }
   .bg-navy-lighter { background-color: var(--navy-lighter); }
   
   /* Glassmorphism effects */
   .glass {
     background: var(--glass-bg);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
     border: 1px solid var(--glass-border);
-    box-shadow: 0 8px 32px var(--glass-shadow);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   }
   
   .glass-card {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(233, 196, 106, 0.2);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  }
+  
+  .elite-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(233, 196, 106, 0.3);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
+  }
+  
+  .navbar-glass {
+    background: rgba(10, 31, 45, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(233, 196, 106, 0.2);
   }
   
   /* Gradient utilities */
@@ -111,11 +140,21 @@
   }
   
   .text-gradient-gold {
-    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    background: linear-gradient(135deg, var(--textile-gold), var(--textile-gold-light));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+  
+  .text-textile-gold { color: var(--textile-gold); }
+  .text-textile-text { color: var(--textile-text); }
+  
+  .bg-textile-gold { background-color: var(--textile-gold); }
+  .bg-textile-gradient { 
+    background: linear-gradient(135deg, var(--textile-gold), var(--textile-gold-light)); 
+  }
+  
+  .border-textile-gold { border-color: var(--textile-gold); }
   
   /* Animation utilities */
   .animate-float {
@@ -455,6 +494,82 @@
   filter: sepia(20%) saturate(90%) brightness(0.8) hue-rotate(10deg);
 }
 
+/* Textile-Inspired Floating Shapes */
+@keyframes textileFloat {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(15px, -10px) rotate(2deg); }
+  50% { transform: translate(-10px, -20px) rotate(-1deg); }
+  75% { transform: translate(5px, -15px) rotate(1deg); }
+}
+
+@keyframes threadLoop {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.1); }
+}
+
+@keyframes wavePattern {
+  0% { transform: translateX(-100%) scaleY(1); }
+  50% { transform: translateX(0%) scaleY(1.2); }
+  100% { transform: translateX(100%) scaleY(1); }
+}
+
+.textile-float {
+  animation: textileFloat 8s ease-in-out infinite;
+}
+
+.thread-loop {
+  animation: threadLoop 6s ease-in-out infinite;
+}
+
+.wave-pattern {
+  animation: wavePattern 10s ease-in-out infinite;
+}
+
+/* Elite Button Styles */
+.elite-btn {
+  background: linear-gradient(135deg, var(--textile-gold), var(--textile-gold-light));
+  color: var(--textile-navy);
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 8px 24px rgba(233, 196, 106, 0.3);
+  transition: all 0.3s ease;
+}
+
+.elite-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(233, 196, 106, 0.4);
+}
+
+.elite-btn-outline {
+  background: transparent;
+  color: var(--textile-gold);
+  border: 2px solid var(--textile-gold);
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.elite-btn-outline:hover {
+  background: var(--textile-gold);
+  color: var(--textile-navy);
+  transform: translateY(-2px);
+}
+
+/* Radial Gradient Overlays */
+.radial-overlay {
+  background: radial-gradient(circle at 30% 70%, rgba(233, 196, 106, 0.15), transparent 50%),
+              radial-gradient(circle at 70% 30%, rgba(244, 162, 97, 0.1), transparent 50%);
+}
+
+/* Glow Text Effect */
+.glow-text {
+  text-shadow: 0 0 20px rgba(233, 196, 106, 0.5), 
+               0 0 40px rgba(233, 196, 106, 0.3), 
+               0 0 60px rgba(233, 196, 106, 0.1);
+}
+
 /* Enhanced Accessibility */
 @media (prefers-reduced-motion: reduce) {
   .card-3d:hover,
@@ -463,7 +578,10 @@
   .confetti-particle,
   .light-pulse,
   .morphing-blob,
-  .btn-ripple:active::after {
+  .btn-ripple:active::after,
+  .textile-float,
+  .thread-loop,
+  .wave-pattern {
     animation: none;
   }
   

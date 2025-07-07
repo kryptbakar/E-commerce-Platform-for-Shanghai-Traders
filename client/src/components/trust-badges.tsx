@@ -1,4 +1,5 @@
 import { Shield, Award, CheckCircle, Clock, Star, Globe } from "lucide-react";
+import TextileDepartmentVisual from "./textile-department-visual";
 
 export default function TrustBadges() {
   const badges = [
@@ -41,25 +42,31 @@ export default function TrustBadges() {
   ];
 
   return (
-    <div className="py-12 bg-gradient-to-r from-navy-dark via-navy-medium to-navy-dark">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8">
-          <h3 className="text-2xl font-bold text-white mb-2">Trusted by Industry Leaders</h3>
-          <p className="text-gray-300">Your reliable partner for textile machinery imports</p>
+    <div className="py-20 bg-textile-navy relative">
+      <div className="absolute inset-0 radial-overlay"></div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-12">
+          <h3 className="text-3xl font-bold text-textile-gold mb-4">Elite Textile Manufacturing Partner</h3>
+          <p className="text-textile-text/80 text-lg">Precision engineering meets global excellence</p>
         </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        {/* Creative Textile Department Visual */}
+        <div className="mb-16">
+          <TextileDepartmentVisual />
+        </div>
+        
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
           {badges.map((badge, index) => {
             const IconComponent = badge.icon;
             return (
               <div 
                 key={index} 
-                className="trust-badge glass-card p-4 text-center hover-lift flying-element"
-                style={{ animationDelay: `${index * 0.2}s` }}
+                className="elite-card p-6 text-center hover-lift textile-float"
+                style={{ animationDelay: `${index * 0.3}s` }}
               >
-                <IconComponent className={`w-8 h-8 mx-auto mb-3 ${badge.color}`} />
-                <h4 className="text-white font-semibold text-sm mb-1">{badge.title}</h4>
-                <p className="text-gray-300 text-xs">{badge.subtitle}</p>
+                <IconComponent className={`w-10 h-10 mx-auto mb-4 ${badge.color}`} />
+                <h4 className="text-textile-text font-semibold text-sm mb-2">{badge.title}</h4>
+                <p className="text-textile-text/70 text-xs">{badge.subtitle}</p>
               </div>
             );
           })}

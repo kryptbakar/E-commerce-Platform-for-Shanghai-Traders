@@ -10,14 +10,14 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center bg-navy-dark overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0">
-        {/* Floating geometric shapes */}
-        <div className="absolute top-20 left-10 w-20 h-20 bg-blue-500/20 rounded-full animate-float"></div>
-        <div className="absolute top-40 right-20 w-16 h-16 bg-accent/30 rounded-lg animate-float" style={{animationDelay: '2s'}}></div>
-        <div className="absolute bottom-40 left-1/4 w-12 h-12 bg-white/10 rounded-full animate-float" style={{animationDelay: '4s'}}></div>
-        <div className="absolute top-1/3 right-1/3 w-8 h-8 bg-blue-400/40 rounded-full animate-float" style={{animationDelay: '1s'}}></div>
+    <section id="hero" className="relative min-h-screen flex items-center justify-center bg-textile-navy overflow-hidden">
+      {/* Elite Textile Background Elements */}
+      <div className="absolute inset-0 radial-overlay">
+        {/* Floating textile-inspired shapes */}
+        <div className="absolute top-20 left-10 w-20 h-20 bg-textile-gold/20 rounded-full textile-float"></div>
+        <div className="absolute top-40 right-20 w-16 h-16 bg-textile-gold-light/30 rounded-lg thread-loop" style={{animationDelay: '2s'}}></div>
+        <div className="absolute bottom-40 left-1/4 w-12 h-12 bg-textile-text/10 rounded-full wave-pattern" style={{animationDelay: '4s'}}></div>
+        <div className="absolute top-1/3 right-1/3 w-8 h-8 bg-textile-gold/40 rounded-full textile-float" style={{animationDelay: '1s'}}></div>
         
         {/* SVG Wave at bottom */}
         <div className="absolute bottom-0 left-0 w-full">
@@ -31,9 +31,9 @@ export default function Hero() {
         <div className="max-w-5xl mx-auto">
           {/* Main Heading with Animation */}
           <div className="animate-fadeInUp">
-            <h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold text-white mb-8 leading-tight">
-              <span className="block">Shanghai</span>
-              <span className="block text-gradient-gold">Traders</span>
+            <h1 className="text-5xl sm:text-6xl lg:text-8xl font-bold text-textile-text mb-8 leading-tight">
+              <span className="block glow-text">Shanghai</span>
+              <span className="block text-gradient-gold textile-float">Traders</span>
             </h1>
           </div>
           
@@ -56,7 +56,7 @@ export default function Hero() {
           <div className="animate-fadeInUp flex flex-col sm:flex-row gap-6 justify-center mb-16" style={{animationDelay: '0.9s'}}>
             <Button 
               size="lg"
-              className="bg-accent hover:bg-yellow-500 text-navy-dark px-8 py-4 text-lg font-semibold rounded-full hover-lift transition-all duration-300 group"
+              className="elite-btn px-10 py-5 text-lg font-semibold hover-lift transition-all duration-300 group"
               onClick={() => scrollToSection("products")}
             >
               Explore Products
