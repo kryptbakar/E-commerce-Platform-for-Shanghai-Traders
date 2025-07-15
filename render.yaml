@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 services:
   - type: web
     name: shanghai-textiles
@@ -9,4 +10,17 @@ services:
         value: production
       - key: PORT
         value: 10000
+=======
+services:
+  - type: web
+    name: shanghai-textiles
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+>>>>>>> ff4ffe8a0f6462dac5fdd071589aeb0d64b2b34b
     healthCheckPath: / 
