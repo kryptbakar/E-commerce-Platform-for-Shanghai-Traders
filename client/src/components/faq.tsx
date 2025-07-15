@@ -44,6 +44,11 @@ export default function FAQ() {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  const handleContactExperts = () => {
+    // Placeholder for navigation or modal opening
+    console.log("Contact Experts button clicked");
+  };
+
   return (
     <section className="py-24 bg-gray-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -98,7 +103,10 @@ export default function FAQ() {
             <p className="text-white/80 mb-6">
               Our team is ready to help you find the perfect machinery solution for your needs.
             </p>
-            <Button className="bg-accent hover:bg-yellow-500 text-navy-dark font-semibold px-8 py-3 rounded-full">
+            <Button
+              className="w-full md:w-auto px-12 py-4 font-bold rounded-full border-2 border-[#ffe066] bg-black text-white shadow-lg hover:bg-[#ffe066] hover:text-black hover:scale-105 transition-all duration-300 text-lg focus:outline-none focus:ring-2 focus:ring-[#ffe066] focus:ring-offset-2"
+              onClick={handleContactExperts}
+            >
               Contact Our Experts
             </Button>
           </div>

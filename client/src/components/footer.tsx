@@ -9,11 +9,11 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-navy-dark py-16 relative overflow-hidden">
+    <footer className="bg-black py-16 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 right-10 w-20 h-20 bg-accent rounded-full animate-float"></div>
-        <div className="absolute bottom-10 left-10 w-16 h-16 bg-blue-500 rounded-lg animate-float" style={{animationDelay: '2s'}}></div>
+        <div className="absolute top-10 right-10 w-20 h-20 bg-[#ffe066] rounded-full animate-float"></div>
+        <div className="absolute bottom-10 left-10 w-16 h-16 bg-[#ffe066] rounded-lg animate-float" style={{animationDelay: '2s'}}></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -102,12 +102,9 @@ export default function Footer() {
           </div>
         </div>
         
-        <div className="border-t border-white/20 pt-8 flex flex-col sm:flex-row justify-between items-center">
-          <div className="text-white/60 text-sm">
+        <div className="border-t border-[#ffe06633] pt-8 flex flex-col sm:flex-row justify-between items-center">
+          <div className="text-[#fbe3c7] text-sm">
             © 2025 Shanghai Traders. All rights reserved.
-          </div>
-          <div className="text-white/60 text-sm mt-2 sm:mt-0">
-            Built with ❤️ by <span className="text-accent font-semibold">Abubakar</span>
           </div>
         </div>
       </div>

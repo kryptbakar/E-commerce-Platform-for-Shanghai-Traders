@@ -7,7 +7,6 @@ import FAQ from "@/components/faq";
 import Contact from "@/components/contact";
 import Footer from "@/components/footer";
 import FloatingButtons from "@/components/floating-buttons";
-import NewsletterPopup from "@/components/newsletter-popup";
 import ParticleBackground from "@/components/particle-background";
 import TrustBadges from "@/components/trust-badges";
 import { ThemeToggle } from "@/components/theme-provider";
@@ -58,7 +57,6 @@ export default function Home() {
       
       <Footer />
       <FloatingButtons />
-      <NewsletterPopup />
       <ConfettiBurst trigger={showConfetti} onComplete={() => setShowConfetti(false)} />
     </div>
   );

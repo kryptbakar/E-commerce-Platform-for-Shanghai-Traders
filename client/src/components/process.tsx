@@ -26,17 +26,20 @@ export default function Process() {
   ];
 
   return (
-    <section id="process" className="py-24 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="process" className="py-24 bg-black relative overflow-hidden">
+      {/* Gyro-inspired animated background */}
+      <svg className="absolute -top-32 left-1/2 -translate-x-1/2 z-0" width="700" height="220" viewBox="0 0 700 220" fill="none" xmlns="http://www.w3.org/2000/svg" style={{opacity:0.15}}>
+        <ellipse cx="350" cy="110" rx="320" ry="80" fill="#ffe066">
+          <animate attributeName="rx" values="320;360;320" dur="8s" repeatCount="indefinite" />
+        </ellipse>
+      </svg>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-20">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-            Our <span className="text-gradient-gold">Import</span> Process
+          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-black text-[#ffe066] mb-6 tracking-tight drop-shadow-lg font-sans" style={{letterSpacing: '0.04em', textShadow: '0 0 32px #ffe066, 0 2px 8px #000'}}>
+            Our <span className="text-white">Import</span> Process
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            A streamlined 3-step process that ensures seamless machinery imports 
-            from selection to delivery and support.
-          </p>
+          <p className="text-2xl text-[#fbe3c7] max-w-3xl mx-auto leading-relaxed font-semibold font-cormorant" style={{textShadow: '0 2px 8px #000'}}>A streamlined 3-step process that ensures seamless machinery imports from selection to delivery and support.</p>
         </div>
 
         {/* Timeline */}
@@ -96,17 +99,16 @@ export default function Process() {
 
         {/* Bottom CTA */}
         <div className="text-center mt-20">
-          <div className="bg-navy-dark rounded-3xl p-8 lg:p-12 text-white">
-            <h3 className="text-3xl font-bold mb-4">Ready to Start Your Import Journey?</h3>
-            <p className="text-white/80 mb-8 max-w-2xl mx-auto">
-              Let our experienced team guide you through every step of the machinery import process. 
-              From selection to delivery, we've got you covered.
+          <div className="bg-black rounded-3xl p-8 lg:p-12 text-[#fbe3c7] shadow-2xl border border-[#ffe06622]">
+            <h3 className="text-3xl font-black text-[#ffe066] mb-4">Ready to Start Your Import Journey?</h3>
+            <p className="text-[#fbe3c7] mb-8 max-w-2xl mx-auto">
+              Let our experienced team guide you through every step of the machinery import process. From selection to delivery, we've got you covered.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-accent hover:bg-yellow-500 text-navy-dark px-8 py-4 font-semibold rounded-full hover-lift transition-all duration-300">
+              <button className="bg-gradient-to-r from-[#ffe066] to-[#fbe3c7] text-black font-bold px-8 py-4 rounded-full shadow-xl hover:scale-105 transition-all duration-300 text-lg border-0">
                 Start Import Process
               </button>
-              <button className="border-2 border-white/30 text-white hover:bg-white hover:text-navy-dark px-8 py-4 font-semibold rounded-full hover-lift transition-all duration-300">
+              <button className="border-2 border-[#ffe066] text-[#ffe066] font-bold hover:bg-[#ffe066] hover:text-black px-8 py-4 rounded-full shadow-xl hover:scale-105 transition-all duration-300 text-lg">
                 Download Process Guide
               </button>
             </div>

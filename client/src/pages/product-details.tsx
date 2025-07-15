@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation, useRoute } from "wouter";
+import { useQuery } from "@tanstack/react-query";
 import { ArrowLeft, Star, Heart, Share2, Shield, Truck, Clock, MessageSquare, Download, Eye, ZoomIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -12,76 +13,99 @@ interface ProductDetailsParams {
   id: string;
 }
 
+const API_URL = "https://shanghai-production.up.railway.app/api/products/";
+
 export default function ProductDetails() {
-  const [, params] = useRoute<ProductDetailsParams>("/product/:id");
+  // params is either null or an object with string keys
+  const [, params] = useRoute("/product/:id");
+  const productId = params && typeof params === "object" && "id" in params ? params.id : undefined;
   const [, navigate] = useLocation();
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [showImageModal, setShowImageModal] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
-  
-  const product = productsData.products.find(p => p.id === params?.id);
-  
+
+  // Fetch all products from backend API
+  const { data: apiProducts, isLoading, isError } = useQuery({
+    queryKey: ["products"],
+    queryFn: async () => {
+      const res = await fetch(API_URL);
+      if (!res.ok) throw new Error("Failed to fetch products");
+      return await res.json();
+    },
+  });
+
+  // Find the product by id from API or fallback to local JSON
+  const products: any[] = Array.isArray(apiProducts)
+    ? apiProducts.map((product: any) => ({
+        ...product,
+        specifications: product.specifications || {},
+        origin: product.origin || "Pakistan",
+      }))
+    : productsData.products;
+
+  const product = products.find((p) => String(p.id) === String(productId));
+
   useEffect(() => {
-    if (!product) {
+    if (!product && !isLoading) {
       navigate("/");
     }
-  }, [product, navigate]);
+  }, [product, navigate, isLoading]);
 
   if (!product) {
+    if (isLoading) {
+      return <div className="min-h-screen flex items-center justify-center bg-black text-white text-xl">Loading product...</div>;
+    }
     return null;
   }
 
-  const productImages = [
-    product.image,
-    "https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-    "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-    "https://images.unsplash.com/photo-1548092372-0d1bd40894a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600"
-  ];
+  // Use all images from the backend if available
+  const productImages: string[] = Array.isArray(product.images) && product.images.length > 0
+    ? product.images.map((img: string) => img && !img.startsWith('http') ? `http://localhost:8000${img}` : img)
+    : [product.image].filter(Boolean).map((img: string) => img && !img.startsWith('http') ? `http://localhost:8000${img}` : img);
 
-  const features = [
-    { icon: Shield, text: "2-Year Warranty", color: "text-green-400" },
-    { icon: Truck, text: "Free Shipping", color: "text-blue-400" },
-    { icon: Clock, text: "24/7 Support", color: "text-purple-400" },
-    { icon: MessageSquare, text: "Installation Training", color: "text-orange-400" }
-  ];
+  // Use backend fields for features, support, long_description, and brochure
+  const productFeatures: string[] = Array.isArray(product.features) ? product.features : [];
+  const productSupport: string[] = Array.isArray(product.support) ? product.support : [];
+  const productLongDescription: string = product.long_description || product.description || '';
+  const brochureUrl = product.brochure ? (product.brochure.startsWith('http') ? product.brochure : `http://localhost:8000${product.brochure}`) : null;
 
-  const relatedProducts = productsData.products.filter(p => p.id !== product.id && p.category === product.category).slice(0, 3);
+  const relatedProducts: any[] = Array.isArray(products)
+    ? products.filter((p) => String(p.id) !== String(product.id) && p.category === product.category).slice(0, 3)
+    : [];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-black">
       <Navigation />
-      
       <div className="pt-24 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Back Button */}
           <Button 
             variant="ghost" 
             onClick={() => navigate("/")}
-            className="mb-8 hover:bg-white/10"
+            className="mb-8 text-[#ffe066] hover:bg-[#181818] hover:text-[#fbe3c7] font-bold"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Products
           </Button>
-
           <div className="grid lg:grid-cols-2 gap-12 mb-16">
             {/* Product Images */}
             <div className="space-y-4">
-              <div className="relative bg-white rounded-2xl p-4 shadow-lg">
+              <div className="relative bg-[#181818] rounded-2xl p-4 shadow-2xl border border-[#ffe06633]">
                 <img 
-                  src={productImages[selectedImageIndex]} 
+                  src={productImages[selectedImageIndex]}
                   alt={product.name}
-                  className="w-full h-96 object-cover rounded-xl cursor-pointer hover:scale-105 transition-transform duration-300"
+                  className="w-full h-96 object-contain bg-black rounded-xl cursor-pointer hover:scale-105 transition-transform duration-300 shadow-xl"
+                  style={{ filter: 'none' }}
                   onClick={() => setShowImageModal(true)}
                 />
                 <Button
                   size="sm"
-                  className="absolute top-6 right-6 bg-white/20 backdrop-blur-sm hover:bg-white/30"
+                  className="absolute top-6 right-6 bg-[#ffe066] text-black hover:bg-[#fbe3c7] shadow-lg"
                   onClick={() => setShowImageModal(true)}
                 >
                   <ZoomIn className="h-4 w-4" />
                 </Button>
               </div>
-              
               <div className="flex gap-2 overflow-x-auto pb-2">
                 {productImages.map((img, index) => (
                   <button
@@ -89,8 +113,8 @@ export default function ProductDetails() {
                     onClick={() => setSelectedImageIndex(index)}
                     className={`flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all ${
                       selectedImageIndex === index 
-                        ? 'border-accent shadow-lg' 
-                        : 'border-gray-200 hover:border-gray-300'
+                        ? 'border-[#ffe066] shadow-xl' 
+                        : 'border-[#181818] hover:border-[#ffe06644]'
                     }`}
                   >
                     <img src={img} alt={`${product.name} ${index + 1}`} className="w-full h-full object-cover" />
@@ -98,156 +122,119 @@ export default function ProductDetails() {
                 ))}
               </div>
             </div>
-
             {/* Product Info */}
             <div className="space-y-6">
               <div>
                 <div className="flex items-center gap-2 mb-2">
-                  <Badge variant="secondary" className="bg-accent/20 text-accent">
+                  <Badge variant="secondary" className="bg-[#ffe06622] text-[#ffe066] font-bold">
                     {product.origin}
                   </Badge>
-                  <Badge variant="outline">
+                  <Badge variant="outline" className="border-[#ffe066] text-[#ffe066] font-bold">
                     {product.category}
                   </Badge>
                 </div>
-                <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">{product.name}</h1>
+                <h1 className="text-4xl lg:text-5xl font-black text-[#ffe066] mb-4" style={{textShadow: '0 0 16px #ffe066'}}> {product.name} </h1>
                 <div className="flex items-center gap-4 mb-6">
                   <div className="flex items-center">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                      <Star key={i} className="w-5 h-5 text-[#ffe066] fill-current" />
                     ))}
-                    <span className="ml-2 text-gray-600">(4.9 rating)</span>
+                    <span className="ml-2 text-[#fbe3c7]">(4.9 rating)</span>
                   </div>
                   <Button
                     variant="ghost"
                     size="sm"
                     onClick={() => setIsFavorite(!isFavorite)}
-                    className={isFavorite ? "text-red-500" : "text-gray-500"}
+                    className={isFavorite ? "text-red-500" : "text-[#ffe066]"}
                   >
                     <Heart className={`h-4 w-4 ${isFavorite ? 'fill-current' : ''}`} />
                   </Button>
-                  <Button variant="ghost" size="sm">
+                  <Button variant="ghost" size="sm" className="text-[#ffe066]">
                     <Share2 className="h-4 w-4" />
                   </Button>
                 </div>
               </div>
-
               {/* Features */}
-              <div className="grid grid-cols-2 gap-4">
-                {features.map((feature, index) => {
-                  const IconComponent = feature.icon;
-                  return (
-                    <div key={index} className="flex items-center gap-3 p-3 bg-white rounded-lg">
-                      <IconComponent className={`h-5 w-5 ${feature.color}`} />
-                      <span className="text-sm font-medium text-gray-700">{feature.text}</span>
+              {productFeatures.length > 0 && (
+                <div className="grid grid-cols-2 gap-4">
+                  {productFeatures.map((feature, idx) => (
+                    <div key={idx} className="flex items-center gap-3 p-3 bg-[#181818] rounded-lg border border-[#ffe06622] shadow-sm">
+                      <span className="text-sm font-semibold text-[#ffe066]">{feature}</span>
                     </div>
-                  );
-                })}
-              </div>
-
+                  ))}
+                </div>
+              )}
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="flex-1 bg-accent hover:bg-yellow-500 text-navy-dark font-semibold py-3 rounded-full">
+                <Button className="flex-1 bg-gradient-to-r from-[#ffe066] to-[#fbe3c7] text-black font-bold py-3 rounded-full shadow-xl hover:scale-105 transition-all text-lg border-0">
                   Request Quote
                 </Button>
-                <Button variant="outline" className="flex-1 border-2 border-navy-dark text-navy-dark hover:bg-navy-dark hover:text-white py-3 rounded-full">
-                  <Download className="h-4 w-4 mr-2" />
-                  Download Brochure
-                </Button>
+                {brochureUrl && (
+                  <a href={brochureUrl} target="_blank" rel="noopener noreferrer" className="flex-1">
+                    <Button variant="outline" className="w-full border-2 border-[#ffe066] text-[#ffe066] font-bold hover:bg-[#ffe066] hover:text-black py-3 rounded-full shadow-xl hover:scale-105 transition-all text-lg">
+                      <Download className="h-4 w-4 mr-2" />
+                      Download Brochure
+                    </Button>
+                  </a>
+                )}
               </div>
             </div>
           </div>
-
           {/* Product Details Tabs */}
-          <Tabs defaultValue="specifications" className="w-full">
-            <TabsList className="grid w-full grid-cols-4 mb-8">
-              <TabsTrigger value="specifications">Specifications</TabsTrigger>
-              <TabsTrigger value="description">Description</TabsTrigger>
-              <TabsTrigger value="features">Features</TabsTrigger>
-              <TabsTrigger value="support">Support</TabsTrigger>
+          <Tabs defaultValue="specifications" className="w-full mt-12">
+            <TabsList className="grid w-full grid-cols-4 mb-8 bg-[#181818] rounded-xl shadow-lg border border-[#ffe06622]">
+              <TabsTrigger value="specifications" className="text-[#ffe066] font-bold">Specifications</TabsTrigger>
+              <TabsTrigger value="description" className="text-[#ffe066] font-bold">Description</TabsTrigger>
+              <TabsTrigger value="features" className="text-[#ffe066] font-bold">Features</TabsTrigger>
+              <TabsTrigger value="support" className="text-[#ffe066] font-bold">Support</TabsTrigger>
             </TabsList>
-
             <TabsContent value="specifications" className="space-y-6">
-              <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <h3 className="text-xl font-bold text-gray-900 mb-6">Technical Specifications</h3>
+              <div className="bg-[#181818] rounded-2xl p-8 shadow-2xl border border-[#ffe06622]">
+                <h3 className="text-xl font-bold text-[#ffe066] mb-6">Technical Specifications</h3>
                 <div className="grid md:grid-cols-2 gap-6">
-                  {Object.entries(product.specifications).map(([key, value]) => (
-                    <div key={key} className="flex justify-between items-center p-4 bg-gray-50 rounded-lg">
-                      <span className="font-medium text-gray-700">{key}</span>
-                      <span className="text-gray-900 font-semibold">{value}</span>
+                  {Object.entries(product.specifications ?? {}).map(([key, value]) => (
+                    <div key={key} className="flex justify-between items-center p-4 bg-black rounded-lg border border-[#ffe06622]">
+                      <span className="font-semibold text-[#ffe066]">{key}</span>
+                      <span className="text-[#fbe3c7] font-bold">{String(value)}</span>
                     </div>
                   ))}
                 </div>
               </div>
             </TabsContent>
-
             <TabsContent value="description" className="space-y-6">
-              <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <h3 className="text-xl font-bold text-gray-900 mb-6">Product Description</h3>
-                <div className="prose prose-lg max-w-none">
-                  <p className="text-gray-700 leading-relaxed mb-4">
-                    The {product.name} represents the pinnacle of modern textile manufacturing technology, 
-                    combining decades of Chinese engineering excellence with cutting-edge innovation. 
-                    This machine is designed to meet the demanding requirements of today's textile industry.
-                  </p>
-                  <p className="text-gray-700 leading-relaxed mb-4">
-                    Built with precision engineering and premium materials, this equipment delivers 
-                    consistent performance, exceptional durability, and superior output quality. 
-                    The advanced control system ensures optimal operation while minimizing energy consumption.
-                  </p>
-                  <p className="text-gray-700 leading-relaxed">
-                    Our partnership with leading Chinese manufacturers ensures that every machine 
-                    meets international quality standards and comes with comprehensive warranty coverage. 
-                    Installation support and operator training are included with every purchase.
-                  </p>
+              <div className="bg-[#181818] rounded-2xl p-8 shadow-2xl border border-[#ffe06622]">
+                <h3 className="text-xl font-bold text-[#ffe066] mb-6">Product Description</h3>
+                <div className="prose prose-lg max-w-none text-[#fbe3c7]">
+                  <p className="leading-relaxed mb-4 whitespace-pre-line">{productLongDescription}</p>
                 </div>
               </div>
             </TabsContent>
-
             <TabsContent value="features" className="space-y-6">
-              <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <h3 className="text-xl font-bold text-gray-900 mb-6">Key Features</h3>
-                <div className="grid md:grid-cols-2 gap-6">
-                  {[
-                    "Advanced automation control system",
-                    "Energy-efficient operation",
-                    "High-precision manufacturing",
-                    "Durable construction materials",
-                    "User-friendly interface",
-                    "Low maintenance requirements",
-                    "Comprehensive safety features",
-                    "Excellent after-sales support"
-                  ].map((feature, index) => (
-                    <div key={index} className="flex items-center gap-3">
-                      <div className="w-2 h-2 bg-accent rounded-full"></div>
-                      <span className="text-gray-700">{feature}</span>
-                    </div>
-                  ))}
-                </div>
+              <div className="bg-[#181818] rounded-2xl p-8 shadow-2xl border border-[#ffe06622]">
+                <h3 className="text-xl font-bold text-[#ffe066] mb-6">Key Features</h3>
+                {productFeatures.length > 0 ? (
+                  <ul className="space-y-4 list-disc list-inside text-[#ffe066] text-lg font-semibold">
+                    {productFeatures.map((feature, idx) => (
+                      <li key={idx}>{feature}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-[#ffe066]">No features listed.</p>
+                )}
               </div>
             </TabsContent>
-
             <TabsContent value="support" className="space-y-6">
-              <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <h3 className="text-xl font-bold text-gray-900 mb-6">Support & Service</h3>
-                <div className="space-y-4">
-                  <div className="p-4 bg-green-50 rounded-lg border-l-4 border-green-400">
-                    <h4 className="font-semibold text-green-800 mb-2">2-Year Comprehensive Warranty</h4>
-                    <p className="text-green-700">Full coverage including parts and labor for 24 months.</p>
-                  </div>
-                  <div className="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400">
-                    <h4 className="font-semibold text-blue-800 mb-2">Installation & Training</h4>
-                    <p className="text-blue-700">On-site installation and comprehensive operator training included.</p>
-                  </div>
-                  <div className="p-4 bg-purple-50 rounded-lg border-l-4 border-purple-400">
-                    <h4 className="font-semibold text-purple-800 mb-2">24/7 Technical Support</h4>
-                    <p className="text-purple-700">Round-the-clock technical assistance and remote diagnostics.</p>
-                  </div>
-                  <div className="p-4 bg-orange-50 rounded-lg border-l-4 border-orange-400">
-                    <h4 className="font-semibold text-orange-800 mb-2">Spare Parts Availability</h4>
-                    <p className="text-orange-700">Guaranteed spare parts availability for 10+ years.</p>
-                  </div>
-                </div>
+              <div className="bg-[#181818] rounded-2xl p-8 shadow-2xl border border-[#ffe06622]">
+                <h3 className="text-xl font-bold text-[#ffe066] mb-6">Support & Service</h3>
+                {productSupport.length > 0 ? (
+                  <ul className="space-y-4 list-disc list-inside text-[#ffe066] text-lg font-semibold">
+                    {productSupport.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-[#ffe066]">No support information listed.</p>
+                )}
               </div>
             </TabsContent>
           </Tabs>
@@ -255,28 +242,45 @@ export default function ProductDetails() {
           {/* Related Products */}
           {relatedProducts.length > 0 && (
             <div className="mt-16">
-              <h3 className="text-2xl font-bold text-gray-900 mb-8">Related Products</h3>
+              <h3 className="text-2xl font-bold text-white mb-8">Related Products</h3>
               <div className="grid md:grid-cols-3 gap-6">
-                {relatedProducts.map((relatedProduct) => (
-                  <div key={relatedProduct.id} className="bg-white rounded-2xl p-6 shadow-lg hover-lift group">
-                    <div className="relative overflow-hidden rounded-xl mb-4">
-                      <img 
-                        src={relatedProduct.image} 
-                        alt={relatedProduct.name}
-                        className="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-300"
-                      />
+                {relatedProducts.map((relatedProduct) => {
+                  // Ensure image URL is absolute
+                  let relatedImage = relatedProduct.images && relatedProduct.images.length > 0 ? relatedProduct.images[0] : undefined;
+                  if (relatedImage && !relatedImage.startsWith('http')) {
+                    relatedImage = `http://localhost:8000${relatedImage}`;
+                  }
+                  return (
+                    <div key={relatedProduct.id} className="group bg-white/90 border border-linear-200 hover:border-linear-300 rounded-xl overflow-hidden transition-all hover:shadow-2xl shadow-lg relative">
+                      <div className="relative overflow-hidden">
+                        {relatedImage && (
+                          <img 
+                            src={relatedImage} 
+                            alt={relatedProduct.name}
+                            className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                        )}
+                        {/* Overlay for better text visibility */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent z-10" />
+                        <div className="absolute top-3 right-3 z-20">
+                          <span className="bg-black/80 text-[#ffe066] px-3 py-1 rounded-full text-xs font-semibold shadow-md">{relatedProduct.origin}</span>
+                        </div>
+                        <div className="absolute bottom-0 left-0 w-full px-4 pb-2 z-20">
+                          <h4 className="text-lg font-bold text-white drop-shadow-lg mb-1">{relatedProduct.name}</h4>
+                        </div>
+                      </div>
+                      <div className="p-4 pt-2 bg-gradient-to-t from-black/80 via-black/60 to-transparent relative z-20">
+                        <Button 
+                          size="sm"
+                          className="w-full border-none bg-[#ffe066] text-black font-bold hover:bg-[#ffd700] hover:text-black transition-colors shadow-md"
+                          onClick={() => navigate(`/product/${relatedProduct.id}`)}
+                        >
+                          View Details
+                        </Button>
+                      </div>
                     </div>
-                    <h4 className="font-semibold text-gray-900 mb-2">{relatedProduct.name}</h4>
-                    <p className="text-sm text-gray-600 mb-4">{relatedProduct.origin}</p>
-                    <Button 
-                      size="sm" 
-                      className="w-full"
-                      onClick={() => navigate(`/product/${relatedProduct.id}`)}
-                    >
-                      View Details
-                    </Button>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           )}

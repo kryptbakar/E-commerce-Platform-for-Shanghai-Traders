@@ -7,8 +7,8 @@
 @tailwind utilities;
 
 :root {
-  --background: hsl(0, 0%, 100%);
-  --foreground: hsl(215, 25%, 27%);
+  --background: #000;
+  --foreground: #fbe3c7;
   --muted: hsl(220, 13%, 95%);
   --muted-foreground: hsl(215, 16%, 47%);
   --popover: hsl(0, 0%, 100%);
@@ -17,12 +17,12 @@
   --card-foreground: hsl(215, 25%, 27%);
   --border: hsl(220, 13%, 91%);
   --input: hsl(220, 13%, 91%);
-  --primary: hsl(214, 85%, 60%);
-  --primary-foreground: hsl(0, 0%, 100%);
+  --primary: #ffe066;
+  --primary-foreground: #000;
   --secondary: hsl(220, 13%, 95%);
   --secondary-foreground: hsl(215, 25%, 27%);
-  --accent: hsl(45, 93%, 60%);
-  --accent-foreground: hsl(0, 0%, 100%);
+  --accent: #ffe066;
+  --accent-foreground: #000;
   --destructive: hsl(0, 84.2%, 60.2%);
   --destructive-foreground: hsl(0, 0%, 100%);
   --ring: hsl(214, 85%, 60%);
@@ -43,6 +43,15 @@
   --animation-fast: 0.2s;
   --animation-normal: 0.3s;
   --animation-slow: 0.5s;
+
+  /* Elite Textile Industry Theme Variables */
+  --textile-navy: #000;
+  --textile-navy-light: #181818;
+  --textile-gold: #ffe066;
+  --textile-gold-light: #fbe3c7;
+  --textile-text: #fbe3c7;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
 }
 
 .dark {
@@ -76,8 +85,8 @@
   body {
     @apply font-sans antialiased bg-background text-foreground;
     font-family: 'Inter', 'IBM Plex Sans', system-ui, sans-serif;
-    background-color: #0A1F2D;
-    color: #F9FAFB;
+    background-color: #000 !important;
+    color: #fbe3c7 !important;
   }
 
   html {
@@ -88,11 +97,11 @@
 @layer utilities {
   /* Elite Textile Industry Theme Variables */
   :root {
-    --textile-navy: #0A1F2D;
-    --textile-navy-light: #132E40;
-    --textile-gold: #E9C46A;
-    --textile-gold-light: #F4A261;
-    --textile-text: #F9FAFB;
+    --textile-navy: #000;
+    --textile-navy-light: #181818;
+    --textile-gold: #ffe066;
+    --textile-gold-light: #fbe3c7;
+    --textile-text: #fbe3c7;
     --glass-bg: rgba(255, 255, 255, 0.05);
     --glass-border: rgba(255, 255, 255, 0.1);
   }
@@ -129,7 +138,8 @@
   }
 
   .navbar-glass {
-    background: rgba(10, 31, 45, 0.98);
+    background: rgba(10, 31, 45, 1); /* fully opaque for best contrast */
+    color: #fff !important; /* force white text */
     backdrop-filter: blur(30px);
     border-bottom: 1px solid rgba(233, 196, 106, 0.4);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
