@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-commerce Platform for Shanghai Traders</title>
+<style>
+  :root {
+    --bg: #f7f8fa;
+    --bg-alt: #ffffff;
+    --text: #1a1d23;
+    --text-muted: #5a6270;
+    --accent: #c0392b;
+    --accent-2: #16213e;
+    --border: #e3e5e9;
+    --card-shadow: 0 2px 10px rgba(20,20,30,0.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #11141a;
+      --bg-alt: #171b23;
+      --text: #eceef2;
+      --text-muted: #a2a9b8;
+      --accent: #e0574a;
+      --accent-2: #6d8bff;
+      --border: #262b36;
+      --card-shadow: 0 2px 14px rgba(0,0,0,0.4);
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  a { color: var(--accent-2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  header.hero {
+    background: linear-gradient(135deg, var(--accent-2), #24304f);
+    color: #f5f6fa;
+    padding: 5rem 1.5rem 4rem;
+    text-align: center;
+  }
+  header.hero .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 0.25rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+    margin-bottom: 1.2rem;
+  }
+  header.hero h1 {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    margin: 0 0 0.75rem;
+    font-weight: 700;
+  }
+  header.hero p.tagline {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: #d7dcec;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  main {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  section {
+    padding: 3.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  section:last-of-type { border-bottom: none; }
+
+  section h2 {
+    font-size: 1.6rem;
+    margin: 0 0 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  section h2::before {
+    content: "";
+    width: 6px;
+    height: 1.4rem;
+    background: var(--accent);
+    border-radius: 3px;
+    display: inline-block;
+  }
+
+  p.lead {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    max-width: 760px;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.1rem;
+    margin-top: 1.5rem;
+  }
+  .card {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.4rem;
+    box-shadow: var(--card-shadow);
+  }
+  .card h3 {
+    margin: 0 0 0.6rem;
+    font-size: 1.05rem;
+  }
+  .card ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+  .card li { margin-bottom: 0.35rem; }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+  }
+  .tag {
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .roadmap {
+    list-style: none;
+    margin: 1.5rem 0 0;
+    padding: 0;
+  }
+  .roadmap li {
+    padding: 0.5rem 0;
+    color: var(--text-muted);
+    border-bottom: 1px dashed var(--border);
+  }
+  .roadmap li:last-child { border-bottom: none; }
+  .roadmap li::before {
+    content: "\25A2  ";
+    color: var(--accent);
+  }
+
+  footer {
+    text-align: center;
+    padding: 2.5rem 1.5rem 3.5rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <span class="badge">Active Development</span>
+  <h1>E-commerce Platform for Shanghai Traders</h1>
+  <p class="tagline">A modular commerce foundation built for Shanghai-based traders and SMBs — from catalog to checkout to fulfillment.</p>
+</header>
+
+<main>
+
+  <section id="about">
+    <h2>About</h2>
+    <p class="lead">
+      This project lays the groundwork for a production-ready e-commerce system tailored to
+      trader workflows: catalog management, order processing, payments, and fulfillment.
+      It is designed to be modular — frontend, backend/API, database, and third-party
+      integrations can each evolve independently — and takes a documentation-first,
+      security-by-default approach so the architecture stays clean as features are added.
+    </p>
+  </section>
+
+  <section id="features">
+    <h2>Features</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>Core Commerce</h3>
+        <ul>
+          <li>Product catalog (CRUD)</li>
+          <li>Categories, tags &amp; search</li>
+          <li>Shopping cart / checkout flow</li>
+          <li>Order management &amp; invoices</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Accounts &amp; Roles</h3>
+        <ul>
+          <li>Customer accounts &amp; addresses</li>
+          <li>Admin dashboard (inventory, orders)</li>
+          <li>Role-based access control</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Payments &amp; Fulfillment</h3>
+        <ul>
+          <li>Payment gateway integration</li>
+          <li>Shipping / delivery tracking</li>
+          <li>Refunds &amp; returns workflow</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Observability</h3>
+        <ul>
+          <li>Audit logs for critical actions</li>
+          <li>Metrics dashboard hooks</li>
+          <li>Error monitoring integration</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="tech-stack">
+    <h2>Tech Stack</h2>
+    <p class="lead">Reference architecture — finalized as the implementation lands.</p>
+    <div class="tags">
+      <span class="tag">React / Next.js</span>
+      <span class="tag">Node.js / Express</span>
+      <span class="tag">Django / Flask</span>
+      <span class="tag">REST &amp; GraphQL</span>
+      <span class="tag">PostgreSQL / MySQL</span>
+      <span class="tag">Redis</span>
+      <span class="tag">Docker</span>
+      <span class="tag">CI/CD</span>
+    </div>
+  </section>
+
+  <section id="roadmap">
+    <h2>Roadmap</h2>
+    <ul class="roadmap">
+      <li>Choose stack (frontend / backend / database)</li>
+      <li>Define database schema (products, users, orders)</li>
+      <li>Implement authentication and RBAC</li>
+      <li>Implement catalog + orders</li>
+      <li>Add payment integration</li>
+      <li>Add CI/CD + security scanning</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <p>
+    <a href="https://github.com/kryptbakar/E-commerce-Platform-for-Shanghai-Traders">
+      github.com/kryptbakar/E-commerce-Platform-for-Shanghai-Traders
+    </a>
+  </p>
+</footer>
+
+</body>
+</html>
