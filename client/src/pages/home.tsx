@@ -13,39 +13,17 @@ import ShanghaiAdvantage from "@/components/shanghai-advantage";
 
 export default function Home() {
   return (
-    <div className="geron-inspired min-h-screen smooth-scroll relative scroll-snap-container bg-[#f7f9fa]">
+    <div className="geron-inspired relative min-h-screen bg-[#f7f9fa] smooth-scroll">
       <Navigation />
-      
-      <div className="scroll-snap-section">
-        <Hero />
-      </div>
-      
+      <Hero />
       <TrustBadges />
-
-      <div className="scroll-snap-section">
-        <About />
-      </div>
-      
-      <div className="relative scroll-snap-section">
-        <Products />
-      </div>
-
-      <ShanghaiAdvantage />
-
       <GeronPartner />
-      
-      <div className="scroll-snap-section">
-        <Process />
-      </div>
-      
-      <div className="scroll-snap-section">
-        <FAQ />
-      </div>
-      
-      <div className="scroll-snap-section">
-        <Contact />
-      </div>
-      
+      <About />
+      <Products />
+      <ShanghaiAdvantage />
+      <Process />
+      <FAQ />
+      <Contact />
       <Footer />
       <FloatingButtons />
     </div>

@@ -29,13 +29,13 @@ class ProductImage(models.Model):
 
 class ConsultationRequest(models.Model):
     INQUIRY_TYPES = [
-        ('general', 'General Inquiry'),
-        ('product', 'Product Information'),
-        ('quote', 'Quote Request'),
-        ('sample', 'Sample Request'),
-        ('partnership', 'Partnership/Business'),
+        ('geron', 'GERON — Carding Technology'),
+        ('jsm', 'JSM Jinqiao — Rotor-Spinning Parts'),
+        ('rotex', 'Nantong Rotex — Metalworking Machinery'),
+        ('dumtech', 'Jinhua Dumtech — Compressed Air'),
+        ('quote', 'Multi-product Quote Request'),
         ('technical', 'Technical Support'),
-        ('other', 'Other'),
+        ('general', 'General Inquiry'),
     ]
     
     first_name = models.CharField(max_length=100)

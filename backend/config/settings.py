@@ -24,18 +24,24 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-188@(-15^%o@e9ovy4&(ap^7_8m=#qvw1zea9-68ngfak-*9r2')
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+
+# Production must provide its own secret. The fallback is restricted to explicit local development.
+SECRET_KEY = os.getenv('SECRET_KEY')
+if not SECRET_KEY:
+    if DEBUG or os.getenv('USE_LOCAL_DB', 'false').lower() == 'true':
+        SECRET_KEY = 'local-development-only'
+    else:
+        raise RuntimeError('SECRET_KEY must be configured in production')
 
 # Handle ALLOWED_HOSTS for Railway, Vercel, and local development
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     'shanghai-production.up.railway.app', # Your backend URL
-    'shanghai-textiles.vercel.app',       # Your frontend URL
+    'shanghai-textiles.vercel.app',       # Legacy frontend URL
+    'shanghaitraders.vercel.app',         # Current frontend URL
     'healthcheck.railway.app',            # Railway health checker
 ]
 
@@ -160,11 +166,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'  # This can be any value; Cloudinary will handle the URLs
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-# CORS Settings - Update to handle both production and development
+# CORS Settings for current production and local development
 CORS_ALLOWED_ORIGINS = [
-    "https://shanghai-textiles.vercel.app",  # Production frontend
-    "http://localhost:3000",                # Example local dev
-    "http://localhost:5173",                # Your Vite local dev
+    "https://shanghai-textiles.vercel.app",  # Legacy frontend
+    "https://shanghaitraders.vercel.app",    # Current frontend
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "http://localhost:5174",
 ]
 
 # Allow all origins in debug mode for flexibility
@@ -177,6 +185,7 @@ else:
 CSRF_TRUSTED_ORIGINS = [
     "https://shanghai-production.up.railway.app",
     "https://shanghai-textiles.vercel.app",
+    "https://shanghaitraders.vercel.app",
 ]
 
 CORS_ALLOW_CREDENTIALS = True

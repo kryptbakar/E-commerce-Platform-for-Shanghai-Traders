@@ -42,13 +42,13 @@ export default function Contact() {
   const { toast } = useToast();
 
   const inquiryTypes = [
-    { value: "general", label: "General Inquiry" },
-    { value: "product", label: "Product Information" },
-    { value: "quote", label: "Quote Request" },
-    { value: "sample", label: "Sample Request" },
-    { value: "partnership", label: "Partnership/Business" },
+    { value: "geron", label: "GERON — Carding Technology" },
+    { value: "jsm", label: "JSM Jinqiao — Rotor-Spinning Parts" },
+    { value: "rotex", label: "Nantong Rotex — Metalworking Machinery" },
+    { value: "dumtech", label: "Jinhua Dumtech — Compressed Air" },
+    { value: "quote", label: "Multi-product Quote Request" },
     { value: "technical", label: "Technical Support" },
-    { value: "other", label: "Other" }
+    { value: "general", label: "General Inquiry" }
   ];
 
   const validateForm = (): boolean => {
@@ -182,10 +182,10 @@ export default function Contact() {
         {/* Modern Header */}
         <div className="text-center mb-16">
           <h2 className="text-5xl sm:text-6xl font-black text-[#ffe066] mb-4 tracking-tight" style={{letterSpacing: '0.04em'}}>
-            Let&apos;s discuss your mill requirement
+            Let&apos;s discuss your industrial requirement
           </h2>
           <p className="text-xl text-[#fbe3c7] max-w-2xl mx-auto font-semibold">
-            Tell us what you manufacture, your target output and the equipment you need. Our team will respond with focused next steps.
+            Tell us about your process, capacity and operating requirement. We will connect you with the right principal and focused next steps.
           </p>
         </div>
 

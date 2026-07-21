@@ -4,112 +4,53 @@ import { Button } from "@/components/ui/button";
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-
   const faqs = [
     {
-      question: "What types of textile machinery do you import?",
-      answer: "We specialize in importing a wide range of textile machinery including carding machines, spinning equipment, weaving looms, dyeing machines, and spare parts. Our products come from certified Chinese manufacturers and meet international quality standards."
+      question: "Which manufacturers does Shanghai Traders represent?",
+      answer: "Shanghai Traders serves as sole agent in Pakistan for GERON Card Clothing, JSM Jinqiao Spinning Machinery, Nantong Rotex and Jinhua Dumtech. Together, these principals cover carding technology, rotor-spinning components, metalworking machinery and industrial compressed-air systems."
     },
     {
-      question: "How long does the import process take?",
-      answer: "The typical import timeline ranges from 4-8 weeks depending on the machinery type and customization requirements. This includes order processing, manufacturing, quality inspection, shipping, and customs clearance."
+      question: "What does sole-agent representation mean for our customer?",
+      answer: "It gives customers a direct, locally coordinated route to the manufacturer. We support requirement definition, technical communication, commercial documentation, shipment coordination and post-delivery follow-up through one Pakistan-based team."
     },
     {
-      question: "Do you provide installation and training services?",
-      answer: "Yes, we provide comprehensive installation support and operator training for all machinery. Our technical team ensures proper setup and your staff receives thorough training for optimal machine operation."
+      question: "Can you help identify the right machine or component?",
+      answer: "Yes. Share your process, material, capacity, existing equipment and operating conditions. We will coordinate with the relevant principal to narrow the specification before preparing a commercial proposal."
     },
     {
-      question: "What warranty do you offer on imported machinery?",
-      answer: "Warranty and service coverage depend on the selected machinery and manufacturer. We confirm the applicable warranty, included parts and support terms clearly in every commercial quotation."
+      question: "Do you support complete machinery as well as spare parts?",
+      answer: "Yes. Depending on the principal, our scope includes production machinery, process-critical components, wear parts, compressed-air packages and related system support."
     },
     {
-      question: "Can you source custom or specialized machinery?",
-      answer: "Absolutely! We work closely with our Chinese manufacturing partners to source custom machinery based on your specific requirements. Contact us with your specifications for a personalized quote."
+      question: "Do you coordinate installation and after-sales support?",
+      answer: "The support plan is agreed for each project. Shanghai Traders coordinates available installation guidance, commissioning support, training, warranty communication and replacement-part follow-up with the relevant manufacturer."
     },
     {
-      question: "What are your payment terms?",
-      answer: "We offer flexible payment terms including advance payment, letter of credit (LC), and installment options. Payment terms are customized based on order value and client requirements."
-    },
-    {
-      question: "Do you handle customs clearance and logistics?",
-      answer: "Yes, we handle all aspects of import logistics including customs clearance, documentation, shipping arrangements, and delivery to your facility. We manage the entire process from China to Pakistan."
-    },
-    {
-      question: "What ongoing support do you provide after installation?",
-      answer: "We coordinate technical follow-up, replacement parts and manufacturer support according to the supplied equipment. The exact service scope is agreed before order confirmation."
+      question: "How do we start a technical discussion?",
+      answer: "Use the inquiry form or contact Amir Feroz by phone or WhatsApp. Include the application, target output, current machine information and any known specification so we can involve the right principal quickly."
     }
   ];
-
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
-  const handleContactExperts = () => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-  };
+  const handleContactExperts = () => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section id="faq" className="py-24 bg-gray-50">
-      <div className="faq-shell max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <HelpCircle className="h-8 w-8 text-accent" />
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900">
-              Frequently Asked <span className="text-gradient-gold">Questions</span>
-            </h2>
-          </div>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Everything you need to know about our textile machinery import services
-          </p>
+    <section id="faq" className="bg-gray-50 py-24">
+      <div className="faq-shell mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-16 text-center">
+          <div className="mb-4 flex items-center justify-center gap-3"><HelpCircle className="h-8 w-8 text-accent" /><h2 className="text-4xl font-bold text-gray-900 sm:text-5xl">Working with Shanghai Traders</h2></div>
+          <p className="mx-auto max-w-2xl text-xl text-gray-600">Clear answers about our principals, technical process and local support.</p>
         </div>
-
-        {/* FAQ Items */}
         <div className="faq-list space-y-4">
           {faqs.map((faq, index) => (
-            <div 
-              key={index} 
-              className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow"
-            >
-              <Button
-                onClick={() => toggleFAQ(index)}
-                className="w-full p-6 text-left bg-transparent hover:bg-gray-50 border-none justify-between h-auto"
-                variant="ghost"
-              >
-                <h3 className="text-lg font-semibold text-gray-900 pr-4">
-                  {faq.question}
-                </h3>
-                {openIndex === index ? (
-                  <ChevronUp className="h-5 w-5 text-gray-500 flex-shrink-0" />
-                ) : (
-                  <ChevronDown className="h-5 w-5 text-gray-500 flex-shrink-0" />
-                )}
+            <div key={faq.question} className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-md">
+              <Button onClick={() => setOpenIndex(openIndex === index ? null : index)} className="h-auto w-full justify-between border-none bg-transparent p-6 text-left hover:bg-gray-50" variant="ghost" aria-expanded={openIndex === index}>
+                <h3 className="pr-4 text-lg font-semibold text-gray-900">{faq.question}</h3>
+                {openIndex === index ? <ChevronUp className="h-5 w-5 shrink-0 text-gray-500" /> : <ChevronDown className="h-5 w-5 shrink-0 text-gray-500" />}
               </Button>
-              
-              {openIndex === index && (
-                <div className="px-6 pb-6 animate-slideDown">
-                  <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
-                </div>
-              )}
+              {openIndex === index && <div className="animate-slideDown px-6 pb-6"><p className="leading-relaxed text-gray-600">{faq.answer}</p></div>}
             </div>
           ))}
         </div>
-
-        {/* Contact CTA */}
-        <div className="text-center mt-16">
-          <div className="bg-navy-dark rounded-2xl p-8 text-white">
-            <h3 className="text-2xl font-bold mb-4">Still Have Questions?</h3>
-            <p className="text-white/80 mb-6">
-              Our team is ready to help you find the perfect machinery solution for your needs.
-            </p>
-            <Button
-              className="w-full md:w-auto px-8 py-3 font-semibold rounded-md bg-[#b7662b] text-white hover:bg-[#9d5420] text-base"
-              onClick={handleContactExperts}
-            >
-              Contact Our Experts
-            </Button>
-          </div>
-        </div>
+        <div className="mt-16 text-center"><div className="rounded-2xl bg-navy-dark p-8 text-white"><h3 className="mb-4 text-2xl font-bold">Have a specific production challenge?</h3><p className="mb-6 text-white/80">Our team will involve the right principal and help define a practical next step.</p><Button onClick={handleContactExperts} className="w-full rounded-md bg-[#747aa4] px-8 py-3 text-base font-semibold text-white hover:bg-[#8a90b7] md:w-auto">Contact our team</Button></div></div>
       </div>
     </section>
   );
