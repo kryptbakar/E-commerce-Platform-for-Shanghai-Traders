@@ -20,7 +20,7 @@ export default function FAQ() {
     },
     {
       question: "What warranty do you offer on imported machinery?",
-      answer: "All our machinery comes with a 2-year comprehensive warranty covering parts and labor. We also guarantee spare parts availability for 10+ years and provide 24/7 technical support."
+      answer: "Warranty and service coverage depend on the selected machinery and manufacturer. We confirm the applicable warranty, included parts and support terms clearly in every commercial quotation."
     },
     {
       question: "Can you source custom or specialized machinery?",
@@ -36,7 +36,7 @@ export default function FAQ() {
     },
     {
       question: "What ongoing support do you provide after installation?",
-      answer: "We provide ongoing technical support including remote diagnostics, on-site maintenance, spare parts supply, and software updates. Our support team is available 24/7 for any technical assistance."
+      answer: "We coordinate technical follow-up, replacement parts and manufacturer support according to the supplied equipment. The exact service scope is agreed before order confirmation."
     }
   ];
 
@@ -45,13 +45,12 @@ export default function FAQ() {
   };
 
   const handleContactExperts = () => {
-    // Placeholder for navigation or modal opening
-    console.log("Contact Experts button clicked");
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section className="py-24 bg-gray-50">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="faq" className="py-24 bg-gray-50">
+      <div className="faq-shell max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-4">
@@ -66,7 +65,7 @@ export default function FAQ() {
         </div>
 
         {/* FAQ Items */}
-        <div className="space-y-4">
+        <div className="faq-list space-y-4">
           {faqs.map((faq, index) => (
             <div 
               key={index} 
@@ -104,7 +103,7 @@ export default function FAQ() {
               Our team is ready to help you find the perfect machinery solution for your needs.
             </p>
             <Button
-              className="w-full md:w-auto px-12 py-4 font-bold rounded-full border-2 border-[#ffe066] bg-black text-white shadow-lg hover:bg-[#ffe066] hover:text-black hover:scale-105 transition-all duration-300 text-lg focus:outline-none focus:ring-2 focus:ring-[#ffe066] focus:ring-offset-2"
+              className="w-full md:w-auto px-8 py-3 font-semibold rounded-md bg-[#b7662b] text-white hover:bg-[#9d5420] text-base"
               onClick={handleContactExperts}
             >
               Contact Our Experts

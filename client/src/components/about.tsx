@@ -1,138 +1,42 @@
-import { Handshake, Globe, Award, Users, TrendingUp, Shield } from "lucide-react";
-import AnimatedCounter from "./animated-counter";
+import { CheckCircle2, Gauge, Settings, ShieldCheck } from "lucide-react";
 
 export default function About() {
-  const achievements = [
-    { number: "15+", label: "Years Experience", icon: TrendingUp },
-    { number: "200+", label: "Happy Clients", icon: Users },
-    { number: "500+", label: "Machines Imported", icon: Award },
-    { number: "99%", label: "Success Rate", icon: Shield }
+  const points = [
+    { icon: Gauge, title: "Production-led advice", text: "Recommendations based on fiber, output, count range and mill conditions." },
+    { icon: ShieldCheck, title: "Supplier verification", text: "Factory checks, specification review and pre-dispatch quality coordination." },
+    { icon: Settings, title: "Lifecycle support", text: "Spare parts planning, installation guidance and technical follow-up after delivery." },
   ];
 
   return (
-    <section id="about" className="py-24 bg-black relative overflow-hidden">
-      {/* Animated yellow background shape */}
-      <svg className="absolute -top-32 left-1/2 -translate-x-1/2 z-0" width="600" height="200" viewBox="0 0 600 200" fill="none" xmlns="http://www.w3.org/2000/svg" style={{opacity:0.18}}>
-        <ellipse cx="300" cy="100" rx="280" ry="60" fill="#ffe066">
-          <animate attributeName="rx" values="280;320;280" dur="8s" repeatCount="indefinite" />
-        </ellipse>
-      </svg>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-black text-[#ffe066] mb-6 tracking-tight drop-shadow-lg font-sans" style={{letterSpacing: '0.04em', textShadow: '0 0 32px #ffe066, 0 2px 8px #000'}}>
-            About <span className="text-white">Shanghai Traders</span>
-          </h2>
-          <p className="text-2xl text-[#fbe3c7] max-w-3xl mx-auto leading-relaxed font-semibold font-cormorant" style={{textShadow: '0 2px 8px #000'}}>Bridging Chinese innovation with Pakistani manufacturing excellence for over 15 years</p>
-        </div>
-        {/* Main Content - Two Column Layout */}
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20 animate-fadeInUp">
-          {/* Left: Content */}
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-4xl font-black text-[#ffe066] mb-6 font-sans tracking-tight" style={{textShadow: '0 0 32px #ffe066, 0 2px 8px #000'}}>Your Elite Manufacturing Partner</h3>
-              <p className="text-xl text-[#fbe3c7cc] leading-relaxed mb-6 font-cormorant">Shanghai Traders has been at the forefront of textile machinery imports for over a decade, specializing in bringing cutting-edge Chinese manufacturing technology to Pakistan's thriving textile industry.</p>
-              <p className="text-xl text-[#fbe3c7bb] leading-relaxed mb-8">Our strategic partnership with <span className="font-bold text-[#ffe066]">Geron Card Clothing (China)</span> ensures access to the most advanced textile machinery and spare parts, backed by world-class engineering and innovation.</p>
-            </div>
-            {/* Key Features */}
-            <div className="grid grid-cols-2 gap-6">
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-[#ffe06622] rounded-lg flex items-center justify-center">
-                    <Handshake className="h-6 w-6 text-[#ffe066]" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-[#ffe066]">Reliability</h4>
-                    <p className="text-sm text-[#fbe3c7]">Trusted partnerships</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-[#ffe06622] rounded-lg flex items-center justify-center">
-                    <Award className="h-6 w-6 text-[#ffe066]" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-[#ffe066]">Quality</h4>
-                    <p className="text-sm text-[#fbe3c7]">Premium machinery</p>
-                  </div>
-                </div>
-              </div>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-[#ffe06622] rounded-lg flex items-center justify-center">
-                    <Globe className="h-6 w-6 text-[#ffe066]" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-[#ffe066]">Expertise</h4>
-                    <p className="text-sm text-[#fbe3c7]">Import knowledge</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-[#ffe06622] rounded-lg flex items-center justify-center">
-                    <Users className="h-6 w-6 text-[#ffe066]" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-[#ffe066]">Support</h4>
-                    <p className="text-sm text-[#fbe3c7]">Expert assistance</p>
-                  </div>
-                </div>
-              </div>
+    <section id="about" className="py-24 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="about-layout grid lg:grid-cols-2 gap-16 items-center">
+          <div className="about-visual relative">
+            <img src="/images/card-clothing-wire.webp" alt="Precision card clothing wire for textile carding machines" loading="lazy" decoding="async" className="rounded-2xl w-full aspect-[4/3] object-cover shadow-[0_24px_60px_rgba(23,50,77,.16)]" />
+            <div className="absolute -bottom-7 right-6 left-6 sm:left-auto sm:w-72 bg-white p-5 rounded-xl shadow-xl border border-[#dce3e6]">
+              <div className="text-sm uppercase tracking-[.15em] text-[#b7662b] font-bold mb-1">Carding expertise</div>
+              <p className="text-sm !text-[#526579]">Machines, metallic card clothing and mill-ready spare parts from one accountable source.</p>
             </div>
           </div>
-          {/* Right: Image with floating effect */}
-          <div className="relative">
-            <div className="absolute inset-0 bg-[#ffe06622] rounded-2xl opacity-30 animate-float"></div>
-            <img 
-              src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-              alt="Textile machinery and industrial manufacturing" 
-              className="rounded-2xl w-full h-auto relative z-10 hover-lift shadow-2xl"
-            />
-            {/* Floating stats cards */}
-            <div className="absolute -bottom-6 -left-6 bg-[#ffe066] p-4 rounded-xl z-20 animate-float shadow-2xl hover:scale-105 transition-transform duration-300" style={{animationDelay: '1s'}}>
-              <div className="text-center">
-                <AnimatedCounter 
-                  end={15} 
-                  suffix="+" 
-                  className="text-2xl font-black text-black"
-                />
-                <div className="text-sm text-black/80">Years</div>
-              </div>
-            </div>
-            <div className="absolute -top-6 -right-6 bg-[#ffe066] p-4 rounded-xl z-20 animate-float shadow-2xl hover:scale-105 transition-transform duration-300" style={{animationDelay: '2s'}}>
-              <div className="text-center">
-                <AnimatedCounter 
-                  end={200} 
-                  suffix="+" 
-                  className="text-2xl font-black text-black"
-                />
-                <div className="text-sm text-black/80">Clients</div>
-              </div>
+          <div className="about-copy">
+            <p className="section-kicker">About Shanghai Traders</p>
+            <h2 className="section-title mb-6">Built around the realities of textile production.</h2>
+            <p className="text-lg leading-relaxed mb-5">We connect Pakistani textile manufacturers with dependable machinery and component suppliers in China. Our work starts with your process requirements—not a generic equipment list.</p>
+            <p className="text-lg leading-relaxed mb-8">For carding machines, card clothing wires, spinning machines and related wire components, we coordinate specifications, sourcing, logistics and post-delivery support.</p>
+            <div className="space-y-5">
+              {points.map(({ icon: Icon, title, text }) => (
+                <div key={title} className="flex gap-4">
+                  <div className="w-11 h-11 shrink-0 rounded-lg bg-[#eaf0f2] flex items-center justify-center"><Icon className="h-5 w-5 text-[#315b4d]" /></div>
+                  <div><h3 className="text-base font-bold mb-1">{title}</h3><p className="text-sm leading-relaxed">{text}</p></div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-        {/* Achievement Stats */}
-        <div className="bg-[#181818] rounded-3xl p-8 lg:p-12 mt-16 shadow-2xl">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-black text-[#ffe066] mb-4" style={{textShadow: '0 0 16px #ffe066'}}>Our Track Record</h3>
-            <p className="text-[#fbe3c7]">Numbers that speak for our commitment to excellence</p>
-          </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {achievements.map((achievement, index) => {
-              const IconComponent = achievement.icon;
-              return (
-                <div key={index} className="text-center group hover-lift textile-float hover:scale-105 transition-transform duration-300" style={{ animationDelay: `${index * 0.5}s` }}>
-                  <div className="w-16 h-16 bg-[#ffe06622] rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-[#ffe06644] transition-colors border border-[#ffe06644] shadow-xl">
-                    <IconComponent className="h-8 w-8 text-[#ffe066]" />
-                  </div>
-                  <AnimatedCounter 
-                    end={parseInt(achievement.number.replace(/\D/g, ""))} 
-                    suffix={achievement.number.includes("+") ? "+" : achievement.number.includes("%") ? "%" : ""} 
-                    className="text-3xl lg:text-4xl font-black text-[#ffe066] mb-2 block glow-text"
-                  />
-                  <div className="text-[#fbe3c7] font-semibold">{achievement.label}</div>
-                </div>
-              );
-            })}
-          </div>
+        <div className="about-capabilities mt-24 grid grid-cols-2 lg:grid-cols-4 border-y border-[#dce3e6]">
+          {[["GERON", "Sole agent"], ["Carding", "Machines and card clothing"], ["Spinning", "Machines and components"], ["China → Pakistan", "Sourcing and local support"]].map(([value,label]) => (
+            <div key={label} className="py-8 px-5 border-r border-[#dce3e6] last:border-r-0"><div className="text-3xl font-bold text-[#17324d]">{value}</div><div className="mt-1 text-sm text-[#687a89] flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-[#b7662b]" />{label}</div></div>
+          ))}
         </div>
       </div>
     </section>
