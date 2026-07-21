@@ -2,7 +2,7 @@ import { BadgeCheck, Boxes, Headphones, Network } from "lucide-react";
 
 export default function TrustBadges() {
   const items = [
-    { icon: BadgeCheck, title: "Four sole-agent principals", text: "Direct representation across four specialist manufacturers." },
+    { icon: BadgeCheck, title: "Sole agent for 4 principals", text: "Direct representation across four specialist manufacturers." },
     { icon: Network, title: "Multi-industry capability", text: "Textile, metalworking and compressed-air technologies." },
     { icon: Boxes, title: "Machines + critical parts", text: "Capital equipment, process components and replacement supply." },
     { icon: Headphones, title: "Pakistan-based continuity", text: "One local team before, during and after your purchase." },

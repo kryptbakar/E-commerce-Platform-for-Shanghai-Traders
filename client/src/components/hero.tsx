@@ -14,14 +14,14 @@ export default function Hero() {
           <div className="min-w-0">
             <button onClick={() => scrollTo("principals")} className="hero-credential mb-7">
               <BadgeCheck className="h-4 w-4" />
-              Sole agents in Pakistan for four specialist manufacturers
+              Sole agent in Pakistan for four specialist manufacturers
             </button>
             <h1 className="hero-brand-heading mb-7">
               <span className="hero-brand-name">Shanghai Traders</span>
               <span className="hero-brand-promise">Global industrial technology. Trusted local representation.</span>
             </h1>
             <p className="mb-9 max-w-2xl text-xl leading-relaxed text-[#526579]">
-              Direct access to specialist solutions from GERON, JSM Jinqiao, Nantong Rotex and Jinhua Dumtech—supported by one experienced team in Pakistan.
+              Direct access to specialist solutions from GERON, JSM Jinqiao, Nantong Rotex and Jinhua Dumtech - supported by one experienced team in Pakistan.
             </p>
             <div className="mb-10 flex flex-col gap-4 sm:flex-row">
               <Button onClick={() => scrollTo("principals")} className="group h-14 rounded-md bg-[#17324d] px-8 text-base font-semibold text-white hover:bg-[#244968]">
@@ -32,7 +32,7 @@ export default function Hero() {
               </Button>
             </div>
             <div className="hero-proof-grid">
-              {[{ icon: BadgeCheck, value: "4", label: "sole-agent principals" }, { icon: Factory, value: "3", label: "industrial disciplines" }, { icon: Headphones, value: "1", label: "local support team" }].map(({ icon: Icon, value, label }) => (
+              {[{ icon: BadgeCheck, value: "4", label: "represented manufacturers" }, { icon: Factory, value: "4", label: "specialist technologies" }, { icon: Headphones, value: "1", label: "local support team" }].map(({ icon: Icon, value, label }) => (
                 <div key={label}><Icon className="h-4 w-4" /><strong>{value}</strong><span>{label}</span></div>
               ))}
             </div>
@@ -52,7 +52,7 @@ export default function Hero() {
               </div>
             </div>
             <div className="hero-route-badge absolute -right-3 -top-5 rounded-lg px-5 py-4 text-white shadow-xl">
-              <div className="text-lg font-bold">China → Pakistan</div>
+              <div className="text-lg font-bold">China to Pakistan</div>
               <div className="text-xs text-white/85">Direct principal coordination</div>
             </div>
           </div>
